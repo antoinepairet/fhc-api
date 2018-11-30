@@ -30,13 +30,13 @@ export class PersonType {
   }
   addresses?: Array<models.AddressType>
 
-  birthdate?: DateType
+  birthdate?: models.DateType
 
   birthlocation?: models.AddressTypeBase
 
   civilstate?: models.Civilstate
 
-  deathdate?: DateType
+  deathdate?: models.DateType
 
   deathlocation?: models.AddressTypeBase
 
