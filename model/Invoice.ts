@@ -51,6 +51,14 @@ export class Invoice {
   patient?: models.Patient
 
   reason?: Invoice.ReasonEnum
+
+  relatedBatchSendNumber?: number
+
+  relatedBatchYearMonth?: number
+
+  relatedInvoiceIoCode?: string
+
+  relatedInvoiceNumber?: number
 }
 export namespace Invoice {
   export enum ReasonEnum {
