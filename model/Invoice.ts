@@ -28,6 +28,12 @@ export class Invoice {
   constructor(json: JSON | any) {
     Object.assign(this as Invoice, json)
   }
+  relatedBatchSendNumber?: number
+
+  relatedInvoiceIoCode?: string
+
+  relatedInvoiceNumber?: number
+
   creditNote?: boolean
 
   hospitalisedPatient?: boolean
