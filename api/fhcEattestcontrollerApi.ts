@@ -56,6 +56,10 @@ export class fhcEattestcontrollerApi {
     patientLastName: string,
     patientGender: string,
     attest: models.Eattest,
+    traineeSupervisorSsin?: string,
+    traineeSupervisorNihii?: string,
+    traineeSupervisorFirstName?: string,
+    traineeSupervisorLastName?: string,
     date?: number
   ): Promise<models.SendAttestResult | any> {
     let _body = null
@@ -74,6 +78,12 @@ export class fhcEattestcontrollerApi {
       (patientFirstName ? "&patientFirstName=" + patientFirstName : "") +
       (patientLastName ? "&patientLastName=" + patientLastName : "") +
       (patientGender ? "&patientGender=" + patientGender : "") +
+      (traineeSupervisorSsin ? "&traineeSupervisorSsin=" + traineeSupervisorSsin : "") +
+      (traineeSupervisorNihii ? "&traineeSupervisorNihii=" + traineeSupervisorNihii : "") +
+      (traineeSupervisorFirstName
+        ? "&traineeSupervisorFirstName=" + traineeSupervisorFirstName
+        : "") +
+      (traineeSupervisorLastName ? "&traineeSupervisorLastName=" + traineeSupervisorLastName : "") +
       (date ? "&date=" + date : "")
     let headers = this.headers
     headers = headers
@@ -100,6 +110,10 @@ export class fhcEattestcontrollerApi {
     patientLastName: string,
     patientGender: string,
     attest: models.Eattest,
+    traineeSupervisorSsin?: string,
+    traineeSupervisorNihii?: string,
+    traineeSupervisorFirstName?: string,
+    traineeSupervisorLastName?: string,
     date?: number
   ): Promise<models.SendAttestResultWithResponse | any> {
     let _body = null
@@ -118,6 +132,12 @@ export class fhcEattestcontrollerApi {
       (patientFirstName ? "&patientFirstName=" + patientFirstName : "") +
       (patientLastName ? "&patientLastName=" + patientLastName : "") +
       (patientGender ? "&patientGender=" + patientGender : "") +
+      (traineeSupervisorSsin ? "&traineeSupervisorSsin=" + traineeSupervisorSsin : "") +
+      (traineeSupervisorNihii ? "&traineeSupervisorNihii=" + traineeSupervisorNihii : "") +
+      (traineeSupervisorFirstName
+        ? "&traineeSupervisorFirstName=" + traineeSupervisorFirstName
+        : "") +
+      (traineeSupervisorLastName ? "&traineeSupervisorLastName=" + traineeSupervisorLastName : "") +
       (date ? "&date=" + date : "")
     let headers = this.headers
     headers = headers
