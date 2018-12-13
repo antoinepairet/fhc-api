@@ -1,4 +1,5 @@
 export * from "./api/fhcAddressbookcontrollerApi"
+export * from "./api/fhcAdmincontrollerApi"
 export * from "./api/fhcBasicerrorcontrollerApi"
 export * from "./api/fhcChaptercontrollerApi"
 export * from "./api/fhcConsentcontrollerApi"
