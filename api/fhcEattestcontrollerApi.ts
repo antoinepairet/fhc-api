@@ -56,11 +56,11 @@ export class fhcEattestcontrollerApi {
     patientLastName: string,
     patientGender: string,
     attest: models.Eattest,
+    date?: number,
     traineeSupervisorSsin?: string,
     traineeSupervisorNihii?: string,
     traineeSupervisorFirstName?: string,
-    traineeSupervisorLastName?: string,
-    date?: number
+    traineeSupervisorLastName?: string
   ): Promise<models.SendAttestResult | any> {
     let _body = null
     _body = attest
@@ -78,13 +78,13 @@ export class fhcEattestcontrollerApi {
       (patientFirstName ? "&patientFirstName=" + patientFirstName : "") +
       (patientLastName ? "&patientLastName=" + patientLastName : "") +
       (patientGender ? "&patientGender=" + patientGender : "") +
+      (date ? "&date=" + date : "") +
       (traineeSupervisorSsin ? "&traineeSupervisorSsin=" + traineeSupervisorSsin : "") +
       (traineeSupervisorNihii ? "&traineeSupervisorNihii=" + traineeSupervisorNihii : "") +
       (traineeSupervisorFirstName
         ? "&traineeSupervisorFirstName=" + traineeSupervisorFirstName
         : "") +
-      (traineeSupervisorLastName ? "&traineeSupervisorLastName=" + traineeSupervisorLastName : "") +
-      (date ? "&date=" + date : "")
+      (traineeSupervisorLastName ? "&traineeSupervisorLastName=" + traineeSupervisorLastName : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")
@@ -110,11 +110,11 @@ export class fhcEattestcontrollerApi {
     patientLastName: string,
     patientGender: string,
     attest: models.Eattest,
+    date?: number,
     traineeSupervisorSsin?: string,
     traineeSupervisorNihii?: string,
     traineeSupervisorFirstName?: string,
-    traineeSupervisorLastName?: string,
-    date?: number
+    traineeSupervisorLastName?: string
   ): Promise<models.SendAttestResultWithResponse | any> {
     let _body = null
     _body = attest
@@ -132,13 +132,13 @@ export class fhcEattestcontrollerApi {
       (patientFirstName ? "&patientFirstName=" + patientFirstName : "") +
       (patientLastName ? "&patientLastName=" + patientLastName : "") +
       (patientGender ? "&patientGender=" + patientGender : "") +
+      (date ? "&date=" + date : "") +
       (traineeSupervisorSsin ? "&traineeSupervisorSsin=" + traineeSupervisorSsin : "") +
       (traineeSupervisorNihii ? "&traineeSupervisorNihii=" + traineeSupervisorNihii : "") +
       (traineeSupervisorFirstName
         ? "&traineeSupervisorFirstName=" + traineeSupervisorFirstName
         : "") +
-      (traineeSupervisorLastName ? "&traineeSupervisorLastName=" + traineeSupervisorLastName : "") +
-      (date ? "&date=" + date : "")
+      (traineeSupervisorLastName ? "&traineeSupervisorLastName=" + traineeSupervisorLastName : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")
