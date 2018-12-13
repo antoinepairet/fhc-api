@@ -28,6 +28,9 @@ export class Invoice {
   constructor(json: JSON | any) {
     Object.assign(this as Invoice, json)
   }
+
+  creditNote?: boolean
+
   hospitalisedPatient?: boolean
 
   ignorePrescriptionDate?: boolean
@@ -43,6 +46,14 @@ export class Invoice {
   patient?: models.Patient
 
   reason?: Invoice.ReasonEnum
+
+  relatedBatchSendNumber?: number
+
+  relatedBatchYearMonth?: number
+
+  relatedInvoiceIoCode?: string
+
+  relatedInvoiceNumber?: number
 }
 export namespace Invoice {
   export enum ReasonEnum {
