@@ -24,11 +24,15 @@
 
 import * as models from "./models"
 
-export class TAckResponse {
+export class ModelObject {
   constructor(json: JSON | any) {
-    Object.assign(this as TAckResponse, json)
+    Object.assign(this as ModelObject, json)
   }
-  tack?: models.TAck
+  content?: Array<any>
 
-  xadesT?: models.Base64Binary
+  encoding?: string
+
+  id?: string
+
+  mimeType?: string
 }
