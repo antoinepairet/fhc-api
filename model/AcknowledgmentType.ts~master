@@ -24,21 +24,9 @@
 
 import * as models from "./models"
 
-export class DmgMessage {
+export class AcknowledgmentType {
   constructor(json: JSON | any) {
-    Object.assign(this as DmgMessage, json)
+    Object.assign(this as AcknowledgmentType, json)
   }
-  commonOutput?: models.CommonOutput
-
-  complete?: boolean
-
-  errors?: Array<models.MycarenetError>
-
-  io?: string
-
-  mycarenetConversation?: models.MycarenetConversation
-
-  reference?: string
-
-  valueHash?: string
+  cd?: models.CDACKNOWLEDGMENT
 }

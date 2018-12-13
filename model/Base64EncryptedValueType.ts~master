@@ -24,11 +24,11 @@
 
 import * as models from "./models"
 
-export class Base64Binary {
+export class Base64EncryptedValueType {
   constructor(json: JSON | any) {
-    Object.assign(this as Base64Binary, json)
+    Object.assign(this as Base64EncryptedValueType, json)
   }
-  contentType?: string
+  encoding?: string
 
   value?: Array<string>
 }
