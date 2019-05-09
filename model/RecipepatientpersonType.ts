@@ -24,15 +24,43 @@
 
 import * as models from "./models"
 
-export class Personalpart {
+export class RecipepatientpersonType {
   constructor(json: JSON | any) {
-    Object.assign(this as Personalpart, json)
+    Object.assign(this as RecipepatientpersonType, json)
   }
-  cd?: models.CDCARENETPERSONALPART
+  addresses?: Array<models.AddressType>
 
-  date?: models.XMLGregorianCalendar
+  birthdate?: models.DateType
 
-  id?: models.IDKMEHR
+  birthlocation?: models.AddressTypeBase
 
-  time?: models.XMLGregorianCalendar
+  civilstate?: models.Civilstate
+
+  deathdate?: models.DateType
+
+  deathlocation?: models.AddressTypeBase
+
+  familyname?: string
+
+  firstnames?: Array<string>
+
+  ids?: Array<models.IDPATIENT>
+
+  insurancymembership?: models.MemberinsuranceType
+
+  insurancystatus?: models.InsuranceType
+
+  nationality?: models.Nationality
+
+  profession?: models.ProfessionType
+
+  recorddatetime?: models.XMLGregorianCalendar
+
+  sex?: models.SexType
+
+  telecoms?: Array<models.TelecomType>
+
+  texts?: Array<models.TextType>
+
+  usuallanguage?: string
 }

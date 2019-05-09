@@ -30,9 +30,13 @@ export class Invoice {
   }
   creditNote?: boolean
 
+  gnotionNihii?: string
+
   hospitalisedPatient?: boolean
 
   ignorePrescriptionDate?: boolean
+
+  internshipNihii?: string
 
   invoiceNumber?: number
 
@@ -53,6 +57,8 @@ export class Invoice {
   relatedInvoiceIoCode?: string
 
   relatedInvoiceNumber?: number
+
+  startOfCoveragePeriod?: number
 }
 export namespace Invoice {
   export enum ReasonEnum {

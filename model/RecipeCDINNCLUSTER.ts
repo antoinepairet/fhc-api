@@ -24,15 +24,23 @@
 
 import * as models from "./models"
 
-export class Personalpart {
+export class RecipeCDINNCLUSTER {
   constructor(json: JSON | any) {
-    Object.assign(this as Personalpart, json)
+    Object.assign(this as RecipeCDINNCLUSTER, json)
   }
-  cd?: models.CDCARENETPERSONALPART
+  dn?: string
 
-  date?: models.XMLGregorianCalendar
+  l?: string
 
-  id?: models.IDKMEHR
+  s?: RecipeCDINNCLUSTER.SEnum
 
-  time?: models.XMLGregorianCalendar
+  sv?: string
+
+  value?: string
+}
+export namespace RecipeCDINNCLUSTER {
+  export enum SEnum {
+    INNCLUSTER = <any>"CD_INNCLUSTER",
+    VMPGROUP = <any>"CD_VMPGROUP"
+  }
 }

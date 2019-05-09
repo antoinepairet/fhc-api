@@ -24,15 +24,11 @@
 
 import * as models from "./models"
 
-export class Personalpart {
+export class FlatFileWithMetadata {
   constructor(json: JSON | any) {
-    Object.assign(this as Personalpart, json)
+    Object.assign(this as FlatFileWithMetadata, json)
   }
-  cd?: models.CDCARENETPERSONALPART
+  flatFile?: string
 
-  date?: models.XMLGregorianCalendar
-
-  id?: models.IDKMEHR
-
-  time?: models.XMLGregorianCalendar
+  metadata?: models.FlatFileMetadata
 }

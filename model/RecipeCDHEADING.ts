@@ -24,15 +24,28 @@
 
 import * as models from "./models"
 
-export class Personalpart {
+export class RecipeCDHEADING {
   constructor(json: JSON | any) {
-    Object.assign(this as Personalpart, json)
+    Object.assign(this as RecipeCDHEADING, json)
   }
-  cd?: models.CDCARENETPERSONALPART
+  dn?: string
 
-  date?: models.XMLGregorianCalendar
+  l?: string
 
-  id?: models.IDKMEHR
+  s?: RecipeCDHEADING.SEnum
 
-  time?: models.XMLGregorianCalendar
+  sl?: string
+
+  sv?: string
+
+  value?: string
+}
+export namespace RecipeCDHEADING {
+  export enum SEnum {
+    CDHEADING = <any>"CD_HEADING",
+    CDHEADINGLAB = <any>"CD_HEADING_LAB",
+    CDSITE = <any>"CD_SITE",
+    LOCAL = <any>"LOCAL",
+    CDHEADINGREG = <any>"CD_HEADING_REG"
+  }
 }

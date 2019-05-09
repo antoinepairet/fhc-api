@@ -40,6 +40,8 @@ export class InvoiceSender {
 
   lastName?: string
 
+  medicalHouse?: boolean
+
   nihii?: number
 
   phoneNumber?: number

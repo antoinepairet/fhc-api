@@ -24,15 +24,13 @@
 
 import * as models from "./models"
 
-export class Personalpart {
+export class RecipecontentType {
   constructor(json: JSON | any) {
-    Object.assign(this as Personalpart, json)
+    Object.assign(this as RecipecontentType, json)
   }
-  cd?: models.CDCARENETPERSONALPART
+  compoundprescription?: models.RecipecompoundprescriptionType
 
-  date?: models.XMLGregorianCalendar
+  medicinalproduct?: models.RecipemedicinalProductType
 
-  id?: models.IDKMEHR
-
-  time?: models.XMLGregorianCalendar
+  substanceproduct?: models.Substanceproduct
 }

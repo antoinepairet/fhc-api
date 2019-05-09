@@ -40,11 +40,15 @@ export class InvoiceItem {
 
   eidItem?: models.EIDItem
 
+  endDateCode?: number
+
   gnotionNihii?: string
 
   insuranceRef?: string
 
   insuranceRefDate?: number
+
+  internshipNihii?: string
 
   invoiceRef?: string
 
@@ -93,6 +97,8 @@ export namespace InvoiceItem {
     OnePrescriber = <any>"OnePrescriber",
     SelfPrescriber = <any>"SelfPrescriber",
     AddedCode = <any>"AddedCode",
+    OnePrescriberSubstituted = <any>"OnePrescriberSubstituted",
+    ManyPrescribersSubstituted = <any>"ManyPrescribersSubstituted",
     ManyPrescribers = <any>"ManyPrescribers"
   }
   export enum SideCodeEnum {
