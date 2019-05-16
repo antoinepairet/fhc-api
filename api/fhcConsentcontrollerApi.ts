@@ -52,7 +52,8 @@ export class fhcConsentcontrollerApi {
     hcpLastName: string,
     patientSsin: string,
     patientFirstName: string,
-    patientLastName: string
+    patientLastName: string,
+    hcpQuality?: string
   ): Promise<models.ConsentMessageDto | any> {
     let _body = null
 
@@ -66,7 +67,8 @@ export class fhcConsentcontrollerApi {
       (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
       (hcpLastName ? "&hcpLastName=" + hcpLastName : "") +
       (patientFirstName ? "&patientFirstName=" + patientFirstName : "") +
-      (patientLastName ? "&patientLastName=" + patientLastName : "")
+      (patientLastName ? "&patientLastName=" + patientLastName : "") +
+      (hcpQuality ? "&hcpQuality=" + hcpQuality : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")
@@ -90,7 +92,8 @@ export class fhcConsentcontrollerApi {
     patientFirstName: string,
     patientLastName: string,
     eidCardNumber?: string,
-    isiCardNumber?: string
+    isiCardNumber?: string,
+    hcpQuality?: string
   ): Promise<models.ConsentMessageDto | any> {
     let _body = null
 
@@ -106,7 +109,8 @@ export class fhcConsentcontrollerApi {
       (patientFirstName ? "&patientFirstName=" + patientFirstName : "") +
       (patientLastName ? "&patientLastName=" + patientLastName : "") +
       (eidCardNumber ? "&eidCardNumber=" + eidCardNumber : "") +
-      (isiCardNumber ? "&isiCardNumber=" + isiCardNumber : "")
+      (isiCardNumber ? "&isiCardNumber=" + isiCardNumber : "") +
+      (hcpQuality ? "&hcpQuality=" + hcpQuality : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")
@@ -128,7 +132,8 @@ export class fhcConsentcontrollerApi {
     hcpLastName: string,
     existingConsent: models.ConsentTypeDto,
     eidCardNumber?: string,
-    isiCardNumber?: string
+    isiCardNumber?: string,
+    hcpQuality?: string
   ): Promise<models.ConsentMessageDto | any> {
     let _body = null
     _body = existingConsent
@@ -143,7 +148,8 @@ export class fhcConsentcontrollerApi {
       (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
       (hcpLastName ? "&hcpLastName=" + hcpLastName : "") +
       (eidCardNumber ? "&eidCardNumber=" + eidCardNumber : "") +
-      (isiCardNumber ? "&isiCardNumber=" + isiCardNumber : "")
+      (isiCardNumber ? "&isiCardNumber=" + isiCardNumber : "") +
+      (hcpQuality ? "&hcpQuality=" + hcpQuality : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")
