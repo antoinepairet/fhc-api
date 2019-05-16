@@ -24,15 +24,43 @@
 
 import * as models from "./models"
 
-export class Personalpart {
+export class RecipeitemType {
   constructor(json: JSON | any) {
-    Object.assign(this as Personalpart, json)
+    Object.assign(this as RecipeitemType, json)
   }
-  cd?: models.CDCARENETPERSONALPART
+  beginmoment?: models.RecipemomentType
 
-  date?: models.XMLGregorianCalendar
+  cd?: models.RecipeCDITEM
 
-  id?: models.IDKMEHR
+  content?: models.RecipecontentType
 
-  time?: models.XMLGregorianCalendar
+  deliverydate?: models.XMLGregorianCalendar
+
+  duration?: models.RecipedurationType
+
+  endmoment?: models.RecipemomentType
+
+  frequency?: models.RecipefrequencyType
+
+  id?: models.RecipebasicIDKMEHR
+
+  instructionforpatient?: models.TextType
+
+  instructionforreimbursement?: models.TextType
+
+  issubstitutionallowed?: boolean
+
+  lifecycle?: models.RecipelifecycleType
+
+  posology?: models.Posology
+
+  quantity?: models.RecipequantityType
+
+  regimen?: models.Regimen
+
+  renewal?: models.ReciperenewalType
+
+  route?: models.ReciperouteType
+
+  temporality?: models.RecipetemporalityType
 }

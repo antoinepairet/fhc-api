@@ -24,15 +24,11 @@
 
 import * as models from "./models"
 
-export class Personalpart {
+export class Link {
   constructor(json: JSON | any) {
-    Object.assign(this as Personalpart, json)
+    Object.assign(this as Link, json)
   }
-  cd?: models.CDCARENETPERSONALPART
+  href?: string
 
-  date?: models.XMLGregorianCalendar
-
-  id?: models.IDKMEHR
-
-  time?: models.XMLGregorianCalendar
+  templated?: boolean
 }

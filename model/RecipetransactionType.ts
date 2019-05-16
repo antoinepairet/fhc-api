@@ -24,15 +24,23 @@
 
 import * as models from "./models"
 
-export class Personalpart {
+export class RecipetransactionType {
   constructor(json: JSON | any) {
-    Object.assign(this as Personalpart, json)
+    Object.assign(this as RecipetransactionType, json)
   }
-  cd?: models.CDCARENETPERSONALPART
+  author?: models.RecipeauthorType
+
+  cd?: models.RecipeCDTRANSACTION
 
   date?: models.XMLGregorianCalendar
 
-  id?: models.IDKMEHR
+  heading?: models.RecipetransactionheadingType
+
+  id?: models.RecipebasicIDKMEHR
+
+  iscomplete?: boolean
+
+  isvalidated?: boolean
 
   time?: models.XMLGregorianCalendar
 }

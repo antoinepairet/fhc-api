@@ -24,15 +24,9 @@
 
 import * as models from "./models"
 
-export class Personalpart {
+export class ReciperouteType {
   constructor(json: JSON | any) {
-    Object.assign(this as Personalpart, json)
+    Object.assign(this as ReciperouteType, json)
   }
-  cd?: models.CDCARENETPERSONALPART
-
-  date?: models.XMLGregorianCalendar
-
-  id?: models.IDKMEHR
-
-  time?: models.XMLGregorianCalendar
+  cd?: models.CDDRUGROUTE
 }

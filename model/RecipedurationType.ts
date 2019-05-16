@@ -24,15 +24,11 @@
 
 import * as models from "./models"
 
-export class Personalpart {
+export class RecipedurationType {
   constructor(json: JSON | any) {
-    Object.assign(this as Personalpart, json)
+    Object.assign(this as RecipedurationType, json)
   }
-  cd?: models.CDCARENETPERSONALPART
+  decimal?: number
 
-  date?: models.XMLGregorianCalendar
-
-  id?: models.IDKMEHR
-
-  time?: models.XMLGregorianCalendar
+  unit?: models.TimeunitType
 }

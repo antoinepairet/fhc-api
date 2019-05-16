@@ -24,15 +24,19 @@
 
 import * as models from "./models"
 
-export class Personalpart {
+export class FlatFileMetadata {
   constructor(json: JSON | any) {
-    Object.assign(this as Personalpart, json)
+    Object.assign(this as FlatFileMetadata, json)
   }
-  cd?: models.CDCARENETPERSONALPART
+  amount?: number
 
-  date?: models.XMLGregorianCalendar
+  amountPerOAMap?: { [key: string]: Array<number> }
 
-  id?: models.IDKMEHR
+  codes?: Array<number>
 
-  time?: models.XMLGregorianCalendar
+  codesPerOAMap?: { [key: string]: Array<number> }
+
+  recordsCount?: number
+
+  recordsCountPerOAMap?: { [key: string]: Array<number> }
 }
