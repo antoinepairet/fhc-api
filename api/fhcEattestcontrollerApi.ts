@@ -60,7 +60,10 @@ export class fhcEattestcontrollerApi {
     traineeSupervisorSsin?: string,
     traineeSupervisorNihii?: string,
     traineeSupervisorFirstName?: string,
-    traineeSupervisorLastName?: string
+    traineeSupervisorLastName?: string,
+    guardPostNihii?: string,
+    guardPostSsin?: string,
+    guardPostName?: string
   ): Promise<models.SendAttestResult | any> {
     let _body = null
     _body = attest
@@ -84,7 +87,10 @@ export class fhcEattestcontrollerApi {
       (traineeSupervisorFirstName
         ? "&traineeSupervisorFirstName=" + traineeSupervisorFirstName
         : "") +
-      (traineeSupervisorLastName ? "&traineeSupervisorLastName=" + traineeSupervisorLastName : "")
+      (traineeSupervisorLastName ? "&traineeSupervisorLastName=" + traineeSupervisorLastName : "") +
+      (guardPostNihii ? "&guardPostNihii=" + guardPostNihii : "") +
+      (guardPostSsin ? "&guardPostSsin=" + guardPostSsin : "") +
+      (guardPostName ? "&guardPostName=" + guardPostName : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")
@@ -114,7 +120,10 @@ export class fhcEattestcontrollerApi {
     traineeSupervisorSsin?: string,
     traineeSupervisorNihii?: string,
     traineeSupervisorFirstName?: string,
-    traineeSupervisorLastName?: string
+    traineeSupervisorLastName?: string,
+    guardPostNihii?: string,
+    guardPostSsin?: string,
+    guardPostName?: string
   ): Promise<models.SendAttestResultWithResponse | any> {
     let _body = null
     _body = attest
@@ -138,7 +147,10 @@ export class fhcEattestcontrollerApi {
       (traineeSupervisorFirstName
         ? "&traineeSupervisorFirstName=" + traineeSupervisorFirstName
         : "") +
-      (traineeSupervisorLastName ? "&traineeSupervisorLastName=" + traineeSupervisorLastName : "")
+      (traineeSupervisorLastName ? "&traineeSupervisorLastName=" + traineeSupervisorLastName : "") +
+      (guardPostNihii ? "&guardPostNihii=" + guardPostNihii : "") +
+      (guardPostSsin ? "&guardPostSsin=" + guardPostSsin : "") +
+      (guardPostName ? "&guardPostName=" + guardPostName : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")
