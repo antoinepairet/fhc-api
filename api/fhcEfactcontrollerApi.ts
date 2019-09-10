@@ -119,6 +119,7 @@ export class fhcEfactcontrollerApi {
     ssin: string,
     firstName: string,
     lastName: string,
+    limit: number,
     isGuardPost: boolean
   ): Promise<Array<models.EfactMessage> | any> {
     let _body = null
@@ -133,6 +134,7 @@ export class fhcEfactcontrollerApi {
       (ssin ? "&ssin=" + ssin : "") +
       (firstName ? "&firstName=" + firstName : "") +
       (lastName ? "&lastName=" + lastName : "") +
+      (limit ? "&limit=" + limit : "") +
       (isGuardPost ? "&isGuardPost=" + isGuardPost : "")
     let headers = this.headers
     headers = headers

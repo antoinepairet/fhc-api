@@ -42,6 +42,49 @@ export class fhcHubcontrollerApi {
     else throw Error("api-error" + e.status)
   }
 
+  getAccessRightUsingGET(
+    endpoint: string,
+    xFHCKeystoreId: string,
+    xFHCTokenId: string,
+    xFHCPassPhrase: string,
+    hcpLastName: string,
+    hcpFirstName: string,
+    hcpNihii: string,
+    hcpSsin: string,
+    hcpZip: string,
+    sv: string,
+    sl: string,
+    value: string,
+    hubPackageId?: string
+  ): Promise<models.GetAccessRightResponse | any> {
+    let _body = null
+
+    const _url =
+      this.host +
+      "/hub/access" +
+      "?ts=" +
+      new Date().getTime() +
+      (endpoint ? "&endpoint=" + endpoint : "") +
+      (hcpLastName ? "&hcpLastName=" + hcpLastName : "") +
+      (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
+      (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +
+      (hcpSsin ? "&hcpSsin=" + hcpSsin : "") +
+      (hcpZip ? "&hcpZip=" + hcpZip : "") +
+      (sv ? "&sv=" + sv : "") +
+      (sl ? "&sl=" + sl : "") +
+      (value ? "&value=" + value : "") +
+      (hubPackageId ? "&hubPackageId=" + hubPackageId : "")
+    let headers = this.headers
+    headers = headers
+      .filter(h => h.header !== "Content-Type")
+      .concat(new XHR.Header("Content-Type", "application/json"))
+    headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId))
+    headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId))
+    headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase))
+    return XHR.sendCommand("GET", _url, headers, _body)
+      .then(doc => new models.GetAccessRightResponse(doc.body as JSON))
+      .catch(err => this.handleError(err))
+  }
   getHcpConsentUsingGET(
     endpoint: string,
     xFHCKeystoreId: string,
@@ -53,7 +96,7 @@ export class fhcHubcontrollerApi {
     hcpSsin: string,
     hcpZip: string,
     hubPackageId?: string
-  ): Promise<models.HcPartyConsent | any> {
+  ): Promise<models.HcPartyConsentDto | any> {
     let _body = null
 
     const _url =
@@ -75,7 +118,64 @@ export class fhcHubcontrollerApi {
     headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId))
     headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase))
     return XHR.sendCommand("GET", _url, headers, _body)
-      .then(doc => new models.HcPartyConsent(doc.body as JSON))
+      .then(doc => new models.HcPartyConsentDto(doc.body as JSON))
+      .catch(err => this.handleError(err))
+  }
+  getPatientAuditTrailUsingGET(
+    endpoint: string,
+    xFHCKeystoreId: string,
+    xFHCTokenId: string,
+    xFHCPassPhrase: string,
+    hcpLastName: string,
+    hcpFirstName: string,
+    hcpNihii: string,
+    hcpSsin: string,
+    hcpZip: string,
+    hubPackageId?: string,
+    from?: number,
+    to?: number,
+    authorNihii?: string,
+    authorSsin?: string,
+    isGlobal?: boolean,
+    breakTheGlassReason?: string,
+    ssin?: string,
+    sv?: string,
+    sl?: string,
+    id?: string
+  ): Promise<models.GetPatientAuditTrailResponse | any> {
+    let _body = null
+
+    const _url =
+      this.host +
+      "/hub/trail" +
+      "?ts=" +
+      new Date().getTime() +
+      (endpoint ? "&endpoint=" + endpoint : "") +
+      (hcpLastName ? "&hcpLastName=" + hcpLastName : "") +
+      (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
+      (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +
+      (hcpSsin ? "&hcpSsin=" + hcpSsin : "") +
+      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
+      (hcpZip ? "&hcpZip=" + hcpZip : "") +
+      (from ? "&from=" + from : "") +
+      (to ? "&to=" + to : "") +
+      (authorNihii ? "&authorNihii=" + authorNihii : "") +
+      (authorSsin ? "&authorSsin=" + authorSsin : "") +
+      (isGlobal ? "&isGlobal=" + isGlobal : "") +
+      (breakTheGlassReason ? "&breakTheGlassReason=" + breakTheGlassReason : "") +
+      (ssin ? "&ssin=" + ssin : "") +
+      (sv ? "&sv=" + sv : "") +
+      (sl ? "&sl=" + sl : "") +
+      (id ? "&id=" + id : "")
+    let headers = this.headers
+    headers = headers
+      .filter(h => h.header !== "Content-Type")
+      .concat(new XHR.Header("Content-Type", "application/json"))
+    headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId))
+    headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId))
+    headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase))
+    return XHR.sendCommand("GET", _url, headers, _body)
+      .then(doc => new models.GetPatientAuditTrailResponse(doc.body as JSON))
       .catch(err => this.handleError(err))
   }
   getPatientConsentUsingGET1(
@@ -405,7 +505,7 @@ export class fhcHubcontrollerApi {
     authorSsin?: string,
     isGlobal?: boolean,
     breakTheGlassReason?: string
-  ): Promise<Array<models.TransactionSummary> | any> {
+  ): Promise<Array<models.TransactionSummaryDto> | any> {
     let _body = null
 
     const _url =
@@ -434,7 +534,56 @@ export class fhcHubcontrollerApi {
     headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId))
     headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase))
     return XHR.sendCommand("GET", _url, headers, _body)
-      .then(doc => (doc.body as Array<JSON>).map(it => new models.TransactionSummary(it)))
+      .then(doc => (doc.body as Array<JSON>).map(it => new models.TransactionSummaryDto(it)))
+      .catch(err => this.handleError(err))
+  }
+  putAccessRightUsingPOST(
+    endpoint: string,
+    xFHCKeystoreId: string,
+    xFHCTokenId: string,
+    xFHCPassPhrase: string,
+    hcpLastName: string,
+    hcpFirstName: string,
+    hcpNihii: string,
+    hcpSsin: string,
+    hcpZip: string,
+    sv: string,
+    sl: string,
+    value: string,
+    accessRight: string,
+    accessNihii?: string,
+    accessSsin?: string,
+    hubPackageId?: string
+  ): Promise<models.PutAccessRightResponse | any> {
+    let _body = null
+
+    const _url =
+      this.host +
+      "/hub/access" +
+      "?ts=" +
+      new Date().getTime() +
+      (endpoint ? "&endpoint=" + endpoint : "") +
+      (hcpLastName ? "&hcpLastName=" + hcpLastName : "") +
+      (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
+      (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +
+      (hcpSsin ? "&hcpSsin=" + hcpSsin : "") +
+      (hcpZip ? "&hcpZip=" + hcpZip : "") +
+      (sv ? "&sv=" + sv : "") +
+      (sl ? "&sl=" + sl : "") +
+      (value ? "&value=" + value : "") +
+      (accessNihii ? "&accessNihii=" + accessNihii : "") +
+      (accessSsin ? "&accessSsin=" + accessSsin : "") +
+      (accessRight ? "&accessRight=" + accessRight : "") +
+      (hubPackageId ? "&hubPackageId=" + hubPackageId : "")
+    let headers = this.headers
+    headers = headers
+      .filter(h => h.header !== "Content-Type")
+      .concat(new XHR.Header("Content-Type", "application/xml"))
+    headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId))
+    headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId))
+    headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase))
+    return XHR.sendCommand("POST", _url, headers, _body)
+      .then(doc => new models.PutAccessRightResponse(doc.body as JSON))
       .catch(err => this.handleError(err))
   }
   putPatientUsingPOST(
@@ -544,7 +693,7 @@ export class fhcHubcontrollerApi {
     message: string,
     hubPackageId?: string,
     hubApplication?: string
-  ): Promise<models.TransactionIdType | any> {
+  ): Promise<models.PutTransactionResponseDto | any> {
     let _body = null
     _body = message
 
@@ -571,7 +720,7 @@ export class fhcHubcontrollerApi {
     headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId))
     headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase))
     return XHR.sendCommand("POST", _url, headers, _body)
-      .then(doc => new models.TransactionIdType(doc.body as JSON))
+      .then(doc => new models.PutTransactionResponseDto(doc.body as JSON))
       .catch(err => this.handleError(err))
   }
   registerPatientConsentUsingPOST1(
@@ -587,7 +736,7 @@ export class fhcHubcontrollerApi {
     patientSsin: string,
     hubPackageId?: string,
     patientEidCardNumber?: string
-  ): Promise<any | Boolean> {
+  ): Promise<models.PutPatientConsentResponse | any> {
     let _body = null
 
     const _url =
@@ -611,7 +760,7 @@ export class fhcHubcontrollerApi {
     headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId))
     headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase))
     return XHR.sendCommand("POST", _url, headers, _body)
-      .then(doc => true)
+      .then(doc => new models.PutPatientConsentResponse(doc.body as JSON))
       .catch(err => this.handleError(err))
   }
   registerTherapeuticLinkUsingPOST(
@@ -627,7 +776,7 @@ export class fhcHubcontrollerApi {
     patientSsin: string,
     hubPackageId?: string,
     patientEidCardNumber?: string
-  ): Promise<any | Boolean> {
+  ): Promise<models.PutTherapeuticLinkResponse | any> {
     let _body = null
 
     const _url =
@@ -652,7 +801,54 @@ export class fhcHubcontrollerApi {
     headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId))
     headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase))
     return XHR.sendCommand("POST", _url, headers, _body)
-      .then(doc => true)
+      .then(doc => new models.PutTherapeuticLinkResponse(doc.body as JSON))
+      .catch(err => this.handleError(err))
+  }
+  revokeAccessRightUsingDELETE(
+    endpoint: string,
+    xFHCKeystoreId: string,
+    xFHCTokenId: string,
+    xFHCPassPhrase: string,
+    hcpLastName: string,
+    hcpFirstName: string,
+    hcpNihii: string,
+    hcpSsin: string,
+    hcpZip: string,
+    sv: string,
+    sl: string,
+    value: string,
+    accessNihii?: string,
+    accessSsin?: string,
+    hubPackageId?: string
+  ): Promise<models.RevokeAccessRightResponse | any> {
+    let _body = null
+
+    const _url =
+      this.host +
+      "/hub/access" +
+      "?ts=" +
+      new Date().getTime() +
+      (endpoint ? "&endpoint=" + endpoint : "") +
+      (hcpLastName ? "&hcpLastName=" + hcpLastName : "") +
+      (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
+      (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +
+      (hcpSsin ? "&hcpSsin=" + hcpSsin : "") +
+      (hcpZip ? "&hcpZip=" + hcpZip : "") +
+      (sv ? "&sv=" + sv : "") +
+      (sl ? "&sl=" + sl : "") +
+      (value ? "&value=" + value : "") +
+      (accessNihii ? "&accessNihii=" + accessNihii : "") +
+      (accessSsin ? "&accessSsin=" + accessSsin : "") +
+      (hubPackageId ? "&hubPackageId=" + hubPackageId : "")
+    let headers = this.headers
+    headers = headers
+      .filter(h => h.header !== "Content-Type")
+      .concat(new XHR.Header("Content-Type", "application/json"))
+    headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId))
+    headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId))
+    headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase))
+    return XHR.sendCommand("DELETE", _url, headers, _body)
+      .then(doc => new models.RevokeAccessRightResponse(doc.body as JSON))
       .catch(err => this.handleError(err))
   }
   revokeTransactionUsingDELETE(
