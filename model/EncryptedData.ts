@@ -24,17 +24,23 @@
 
 import * as models from "./models"
 
-export class DateType {
+export class EncryptedData {
   constructor(json: JSON | any) {
-    Object.assign(this as DateType, json)
+    Object.assign(this as EncryptedData, json)
   }
-  date?: models.XMLGregorianCalendar
+  cipherData?: models.CipherData
 
-  text?: models.TextType
+  encoding?: string
 
-  time?: models.XMLGregorianCalendar
+  encryptionMethod?: models.EncryptionMethodType
 
-  year?: models.XMLGregorianCalendar
+  encryptionProperties?: models.EncryptionProperties
 
-  yearmonth?: models.XMLGregorianCalendar
+  id?: string
+
+  keyInfo?: models.KeyInfo
+
+  mimeType?: string
+
+  type?: string
 }

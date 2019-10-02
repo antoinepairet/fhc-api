@@ -24,17 +24,11 @@
 
 import * as models from "./models"
 
-export class DateType {
+export class BaseID {
   constructor(json: JSON | any) {
-    Object.assign(this as DateType, json)
+    Object.assign(this as BaseID, json)
   }
-  date?: models.XMLGregorianCalendar
+  nameQualifier?: string
 
-  text?: models.TextType
-
-  time?: models.XMLGregorianCalendar
-
-  year?: models.XMLGregorianCalendar
-
-  yearmonth?: models.XMLGregorianCalendar
+  spnameQualifier?: string
 }

@@ -24,17 +24,13 @@
 
 import * as models from "./models"
 
-export class DateType {
+export class SsinStatusType {
   constructor(json: JSON | any) {
-    Object.assign(this as DateType, json)
+    Object.assign(this as SsinStatusType, json)
   }
-  date?: models.XMLGregorianCalendar
+  canceled?: boolean
 
-  text?: models.TextType
+  replaces?: string
 
-  time?: models.XMLGregorianCalendar
-
-  year?: models.XMLGregorianCalendar
-
-  yearmonth?: models.XMLGregorianCalendar
+  value?: string
 }

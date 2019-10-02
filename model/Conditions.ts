@@ -24,17 +24,13 @@
 
 import * as models from "./models"
 
-export class DateType {
+export class Conditions {
   constructor(json: JSON | any) {
-    Object.assign(this as DateType, json)
+    Object.assign(this as Conditions, json)
   }
-  date?: models.XMLGregorianCalendar
+  conditionsAndAudienceRestrictionsAndOneTimeUses?: Array<models.ConditionAbstractType>
 
-  text?: models.TextType
+  notBefore?: models.XMLGregorianCalendar
 
-  time?: models.XMLGregorianCalendar
-
-  year?: models.XMLGregorianCalendar
-
-  yearmonth?: models.XMLGregorianCalendar
+  notOnOrAfter?: models.XMLGregorianCalendar
 }

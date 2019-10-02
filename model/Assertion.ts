@@ -24,17 +24,25 @@
 
 import * as models from "./models"
 
-export class DateType {
+export class Assertion {
   constructor(json: JSON | any) {
-    Object.assign(this as DateType, json)
+    Object.assign(this as Assertion, json)
   }
-  date?: models.XMLGregorianCalendar
+  advice?: models.AdviceType
 
-  text?: models.TextType
+  conditions?: models.Conditions
 
-  time?: models.XMLGregorianCalendar
+  id?: string
 
-  year?: models.XMLGregorianCalendar
+  issueInstant?: models.XMLGregorianCalendar
 
-  yearmonth?: models.XMLGregorianCalendar
+  issuer?: models.NameIDType
+
+  signature?: models.Signature
+
+  statementsAndAuthnStatementsAndAuthzDecisionStatements?: Array<models.StatementAbstractType>
+
+  subject?: models.Subject
+
+  version?: string
 }

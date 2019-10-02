@@ -24,17 +24,8 @@
 
 import * as models from "./models"
 
-export class DateType {
+export class StatementAbstractType {
   constructor(json: JSON | any) {
-    Object.assign(this as DateType, json)
+    Object.assign(this as StatementAbstractType, json)
   }
-  date?: models.XMLGregorianCalendar
-
-  text?: models.TextType
-
-  time?: models.XMLGregorianCalendar
-
-  year?: models.XMLGregorianCalendar
-
-  yearmonth?: models.XMLGregorianCalendar
 }

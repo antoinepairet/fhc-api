@@ -24,17 +24,17 @@
 
 import * as models from "./models"
 
-export class DateType {
+export class JAXBElementReferenceType {
   constructor(json: JSON | any) {
-    Object.assign(this as DateType, json)
+    Object.assign(this as JAXBElementReferenceType, json)
   }
-  date?: models.XMLGregorianCalendar
+  globalScope?: boolean
 
-  text?: models.TextType
+  name?: models.QName
 
-  time?: models.XMLGregorianCalendar
+  nil?: boolean
 
-  year?: models.XMLGregorianCalendar
+  typeSubstituted?: boolean
 
-  yearmonth?: models.XMLGregorianCalendar
+  value?: models.ReferenceType
 }

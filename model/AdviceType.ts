@@ -24,17 +24,9 @@
 
 import * as models from "./models"
 
-export class DateType {
+export class AdviceType {
   constructor(json: JSON | any) {
-    Object.assign(this as DateType, json)
+    Object.assign(this as AdviceType, json)
   }
-  date?: models.XMLGregorianCalendar
-
-  text?: models.TextType
-
-  time?: models.XMLGregorianCalendar
-
-  year?: models.XMLGregorianCalendar
-
-  yearmonth?: models.XMLGregorianCalendar
+  assertionIDRevesAndAssertionURIRevesAndAssertions?: Array<models.Serializable>
 }

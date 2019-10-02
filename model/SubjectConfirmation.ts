@@ -24,17 +24,17 @@
 
 import * as models from "./models"
 
-export class DateType {
+export class SubjectConfirmation {
   constructor(json: JSON | any) {
-    Object.assign(this as DateType, json)
+    Object.assign(this as SubjectConfirmation, json)
   }
-  date?: models.XMLGregorianCalendar
+  baseID?: models.BaseID
 
-  text?: models.TextType
+  encryptedID?: models.EncryptedElementType
 
-  time?: models.XMLGregorianCalendar
+  method?: string
 
-  year?: models.XMLGregorianCalendar
+  nameID?: models.NameIDType
 
-  yearmonth?: models.XMLGregorianCalendar
+  subjectConfirmationData?: models.SubjectConfirmationDataType
 }

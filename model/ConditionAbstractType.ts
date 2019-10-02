@@ -24,17 +24,8 @@
 
 import * as models from "./models"
 
-export class DateType {
+export class ConditionAbstractType {
   constructor(json: JSON | any) {
-    Object.assign(this as DateType, json)
+    Object.assign(this as ConditionAbstractType, json)
   }
-  date?: models.XMLGregorianCalendar
-
-  text?: models.TextType
-
-  time?: models.XMLGregorianCalendar
-
-  year?: models.XMLGregorianCalendar
-
-  yearmonth?: models.XMLGregorianCalendar
 }
