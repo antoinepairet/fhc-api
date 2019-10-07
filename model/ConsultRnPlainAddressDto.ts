@@ -24,15 +24,11 @@
 
 import * as models from "./models"
 
-export class SearchBySSINReply {
+export class ConsultRnPlainAddressDto {
   constructor(json: JSON | any) {
-    Object.assign(this as SearchBySSINReply, json)
+    Object.assign(this as ConsultRnPlainAddressDto, json)
   }
-  errorInformations?: Array<models.ErrorType>
+  address?: string
 
-  id?: string
-
-  person?: models.PersonType
-
-  status?: models.Status
+  country?: models.CountryType
 }

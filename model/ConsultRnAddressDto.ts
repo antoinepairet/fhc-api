@@ -24,15 +24,21 @@
 
 import * as models from "./models"
 
-export class SearchBySSINReply {
+export class ConsultRnAddressDto {
   constructor(json: JSON | any) {
-    Object.assign(this as SearchBySSINReply, json)
+    Object.assign(this as ConsultRnAddressDto, json)
   }
-  errorInformations?: Array<models.ErrorType>
+  modificationDate?: string
 
-  id?: string
+  origin?: ConsultRnAddressDto.OriginEnum
 
-  person?: models.PersonType
+  plainAddress?: models.ConsultRnPlainAddressDto
 
-  status?: models.Status
+  standardAddress?: models.StandardAddressType
+}
+export namespace ConsultRnAddressDto {
+  export enum OriginEnum {
+    BCSSKSZ = <any>"BCSS_KSZ",
+    RNRR = <any>"RN_RR"
+  }
 }

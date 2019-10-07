@@ -32,7 +32,7 @@ export class ConsultRnPersonDto {
 
   origin?: ConsultRnPersonDto.OriginEnum
 
-  personData?: models.PersonDataType
+  personData?: models.ConsultRnPersonDataDto
 
   ssin?: models.EncodedSSINType
 }

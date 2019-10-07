@@ -28,11 +28,11 @@ export class DateType {
   constructor(json: JSON | any) {
     Object.assign(this as DateType, json)
   }
-  date?: Date
+  date?: models.XMLGregorianCalendar
 
   text?: models.TextType
 
-  time?: Date
+  time?: models.XMLGregorianCalendar
 
   year?: models.XMLGregorianCalendar
 

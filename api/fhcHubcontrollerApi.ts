@@ -409,7 +409,7 @@ export class fhcHubcontrollerApi {
     id: string,
     hubPackageId?: string,
     breakTheGlassReason?: string
-  ): Promise<string | any> {
+  ): Promise<models.Kmehrmessage | any> {
     let _body = null
 
     const _url =
@@ -437,7 +437,7 @@ export class fhcHubcontrollerApi {
     headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId))
     headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase))
     return XHR.sendCommand("GET", _url, headers, _body)
-      .then(doc => JSON.parse(JSON.stringify(doc.body)))
+      .then(doc => new models.Kmehrmessage(doc.body as JSON))
       .catch(err => this.handleError(err))
   }
   getTransactionUsingGET(
@@ -456,7 +456,7 @@ export class fhcHubcontrollerApi {
     id: string,
     hubPackageId?: string,
     breakTheGlassReason?: string
-  ): Promise<string | any> {
+  ): Promise<models.Kmehrmessage | any> {
     let _body = null
 
     const _url =
@@ -484,7 +484,7 @@ export class fhcHubcontrollerApi {
     headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId))
     headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase))
     return XHR.sendCommand("GET", _url, headers, _body)
-      .then(doc => JSON.parse(JSON.stringify(doc.body)))
+      .then(doc => new models.Kmehrmessage(doc.body as JSON))
       .catch(err => this.handleError(err))
   }
   getTransactionsListUsingGET(
