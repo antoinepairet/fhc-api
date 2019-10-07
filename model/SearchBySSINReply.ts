@@ -32,7 +32,7 @@ export class SearchBySSINReply {
 
   id?: string
 
-  person?: models.PersonType
+  person?: models.ConsultRnPersonDto
 
   status?: models.Status
 }
