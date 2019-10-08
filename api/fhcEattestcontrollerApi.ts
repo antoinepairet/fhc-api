@@ -56,14 +56,11 @@ export class fhcEattestcontrollerApi {
     patientLastName: string,
     patientGender: string,
     attest: models.Eattest,
-    date?: number,
     traineeSupervisorSsin?: string,
     traineeSupervisorNihii?: string,
     traineeSupervisorFirstName?: string,
     traineeSupervisorLastName?: string,
-    guardPostNihii?: string,
-    guardPostSsin?: string,
-    guardPostName?: string
+    date?: number
   ): Promise<models.SendAttestResult | any> {
     let _body = null
     _body = attest
@@ -78,19 +75,13 @@ export class fhcEattestcontrollerApi {
       (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
       (hcpLastName ? "&hcpLastName=" + hcpLastName : "") +
       (hcpCbe ? "&hcpCbe=" + hcpCbe : "") +
-      (patientFirstName ? "&patientFirstName=" + patientFirstName : "") +
-      (patientLastName ? "&patientLastName=" + patientLastName : "") +
-      (patientGender ? "&patientGender=" + patientGender : "") +
-      (date ? "&date=" + date : "") +
       (traineeSupervisorSsin ? "&traineeSupervisorSsin=" + traineeSupervisorSsin : "") +
       (traineeSupervisorNihii ? "&traineeSupervisorNihii=" + traineeSupervisorNihii : "") +
       (traineeSupervisorFirstName
         ? "&traineeSupervisorFirstName=" + traineeSupervisorFirstName
         : "") +
       (traineeSupervisorLastName ? "&traineeSupervisorLastName=" + traineeSupervisorLastName : "") +
-      (guardPostNihii ? "&guardPostNihii=" + guardPostNihii : "") +
-      (guardPostSsin ? "&guardPostSsin=" + guardPostSsin : "") +
-      (guardPostName ? "&guardPostName=" + guardPostName : "")
+      (date ? "&date=" + date : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")
@@ -116,14 +107,11 @@ export class fhcEattestcontrollerApi {
     patientLastName: string,
     patientGender: string,
     attest: models.Eattest,
-    date?: number,
     traineeSupervisorSsin?: string,
     traineeSupervisorNihii?: string,
     traineeSupervisorFirstName?: string,
     traineeSupervisorLastName?: string,
-    guardPostNihii?: string,
-    guardPostSsin?: string,
-    guardPostName?: string
+    date?: number
   ): Promise<models.SendAttestResultWithResponse | any> {
     let _body = null
     _body = attest
@@ -138,19 +126,13 @@ export class fhcEattestcontrollerApi {
       (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
       (hcpLastName ? "&hcpLastName=" + hcpLastName : "") +
       (hcpCbe ? "&hcpCbe=" + hcpCbe : "") +
-      (patientFirstName ? "&patientFirstName=" + patientFirstName : "") +
-      (patientLastName ? "&patientLastName=" + patientLastName : "") +
-      (patientGender ? "&patientGender=" + patientGender : "") +
-      (date ? "&date=" + date : "") +
       (traineeSupervisorSsin ? "&traineeSupervisorSsin=" + traineeSupervisorSsin : "") +
       (traineeSupervisorNihii ? "&traineeSupervisorNihii=" + traineeSupervisorNihii : "") +
       (traineeSupervisorFirstName
         ? "&traineeSupervisorFirstName=" + traineeSupervisorFirstName
         : "") +
       (traineeSupervisorLastName ? "&traineeSupervisorLastName=" + traineeSupervisorLastName : "") +
-      (guardPostNihii ? "&guardPostNihii=" + guardPostNihii : "") +
-      (guardPostSsin ? "&guardPostSsin=" + guardPostSsin : "") +
-      (guardPostName ? "&guardPostName=" + guardPostName : "")
+      (date ? "&date=" + date : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")
