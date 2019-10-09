@@ -24,13 +24,19 @@
 
 import * as models from "./models"
 
-export class Status {
+export class RegisterPersonResponseDto {
   constructor(json: JSON | any) {
-    Object.assign(this as Status, json)
+    Object.assign(this as RegisterPersonResponseDto, json)
   }
-  statusCode?: models.StatusCode
+  businessAnomalies?: Array<models.BusinessAnomalyType>
 
-  statusDetail?: models.StatusDetail
+  id?: string
 
-  statusMessage?: string
+  inResponseTo?: string
+
+  issueInstant?: Date
+
+  result?: models.ResultType
+
+  status?: models.Status
 }
