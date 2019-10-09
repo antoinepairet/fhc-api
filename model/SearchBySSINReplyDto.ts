@@ -24,13 +24,15 @@
 
 import * as models from "./models"
 
-export class Status {
+export class SearchBySSINReplyDto {
   constructor(json: JSON | any) {
-    Object.assign(this as Status, json)
+    Object.assign(this as SearchBySSINReplyDto, json)
   }
-  statusCode?: models.StatusCode
+  errorInformations?: Array<models.ErrorType>
 
-  statusDetail?: models.StatusDetail
+  id?: string
 
-  statusMessage?: string
+  person?: models.ConsultRnPersonDto
+
+  status?: models.StatusDto
 }
