@@ -108,6 +108,7 @@ export class fhcEattestvcontrollerApi {
     hcpFirstName: string,
     hcpLastName: string,
     hcpCbe: string,
+    treatmentReason: string,
     patientFirstName: string,
     patientLastName: string,
     patientGender: string,
@@ -134,6 +135,7 @@ export class fhcEattestvcontrollerApi {
       (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
       (hcpLastName ? "&hcpLastName=" + hcpLastName : "") +
       (hcpCbe ? "&hcpCbe=" + hcpCbe : "") +
+      (treatmentReason ? "&treatmentReason=" + treatmentReason : "") +
       (patientFirstName ? "&patientFirstName=" + patientFirstName : "") +
       (patientLastName ? "&patientLastName=" + patientLastName : "") +
       (patientGender ? "&patientGender=" + patientGender : "") +
@@ -168,6 +170,7 @@ export class fhcEattestvcontrollerApi {
     hcpFirstName: string,
     hcpLastName: string,
     hcpCbe: string,
+    treatmentReason: string,
     patientFirstName: string,
     patientLastName: string,
     patientGender: string,
@@ -194,6 +197,7 @@ export class fhcEattestvcontrollerApi {
       (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
       (hcpLastName ? "&hcpLastName=" + hcpLastName : "") +
       (hcpCbe ? "&hcpCbe=" + hcpCbe : "") +
+      (treatmentReason ? "&treatmentReason=" + treatmentReason : "") +
       (patientFirstName ? "&patientFirstName=" + patientFirstName : "") +
       (patientLastName ? "&patientLastName=" + patientLastName : "") +
       (patientGender ? "&patientGender=" + patientGender : "") +
