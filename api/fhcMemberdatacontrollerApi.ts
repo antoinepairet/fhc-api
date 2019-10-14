@@ -80,7 +80,7 @@ export class fhcMemberdatacontrollerApi {
     headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId))
     headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase))
     return XHR.sendCommand("GET", _url, headers, _body)
-      .then(doc => (doc.body as Array<JSON>).map(it => new models.Assertion(it)))
+      .then(doc => doc.body)
       .catch(err => this.handleError(err))
   }
   getMemberDataUsingGET(
@@ -118,7 +118,7 @@ export class fhcMemberdatacontrollerApi {
     headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId))
     headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase))
     return XHR.sendCommand("GET", _url, headers, _body)
-      .then(doc => (doc.body as Array<JSON>).map(it => new models.Assertion(it)))
+      .then(doc => doc.body)
       .catch(err => this.handleError(err))
   }
   queryMemberDataUsingPOST(
@@ -158,7 +158,7 @@ export class fhcMemberdatacontrollerApi {
     headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId))
     headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase))
     return XHR.sendCommand("POST", _url, headers, _body)
-      .then(doc => (doc.body as Array<JSON>).map(it => new models.Assertion(it)))
+      .then(doc => doc.body)
       .catch(err => this.handleError(err))
   }
 }
