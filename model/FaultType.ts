@@ -24,11 +24,15 @@
 
 import * as models from "./models"
 
-export class Status {
+export class FaultType {
   constructor(json: JSON | any) {
-    Object.assign(this as Status, json)
+    Object.assign(this as FaultType, json)
   }
-  code1?: string
+  details?: models.DetailsType
 
-  code2?: string
+  faultCode?: string
+
+  faultSource?: string
+
+  message?: models.StringLangType
 }

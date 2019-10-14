@@ -24,11 +24,9 @@
 
 import * as models from "./models"
 
-export class Status {
+export class DetailsType {
   constructor(json: JSON | any) {
-    Object.assign(this as Status, json)
+    Object.assign(this as DetailsType, json)
   }
-  code1?: string
-
-  code2?: string
+  details?: Array<models.DetailType>
 }

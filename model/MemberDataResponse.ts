@@ -24,11 +24,17 @@
 
 import * as models from "./models"
 
-export class Status {
+export class MemberDataResponse {
   constructor(json: JSON | any) {
-    Object.assign(this as Status, json)
+    Object.assign(this as MemberDataResponse, json)
   }
-  code1?: string
+  assertions?: Array<models.Assertion>
 
-  code2?: string
+  commonOutput?: models.CommonOutput
+
+  errors?: Array<models.FaultType>
+
+  mycarenetConversation?: models.MycarenetConversation
+
+  status?: models.Status
 }

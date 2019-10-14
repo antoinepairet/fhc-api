@@ -24,11 +24,11 @@
 
 import * as models from "./models"
 
-export class Status {
+export class StringLangType {
   constructor(json: JSON | any) {
-    Object.assign(this as Status, json)
+    Object.assign(this as StringLangType, json)
   }
-  code1?: string
+  lang?: string
 
-  code2?: string
+  value?: string
 }
