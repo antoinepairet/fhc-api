@@ -24,17 +24,13 @@
 
 import * as models from "./models"
 
-export class MemberDataResponse {
+export class CommonOutputType {
   constructor(json: JSON | any) {
-    Object.assign(this as MemberDataResponse, json)
+    Object.assign(this as CommonOutputType, json)
   }
-  assertions?: Array<models.Assertion>
+  inputReference?: string
 
-  commonOutput?: models.CommonOutputType
+  nipreference?: string
 
-  errors?: Array<models.FaultType>
-
-  mycarenetConversation?: models.MycarenetConversation
-
-  status?: models.Status
+  outputReference?: string
 }
