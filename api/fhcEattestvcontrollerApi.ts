@@ -108,11 +108,11 @@ export class fhcEattestvcontrollerApi {
     hcpFirstName: string,
     hcpLastName: string,
     hcpCbe: string,
-    treatmentReason: string,
     patientFirstName: string,
     patientLastName: string,
     patientGender: string,
     attest: models.Eattest,
+    treatmentReason?: string,
     date?: number,
     traineeSupervisorSsin?: string,
     traineeSupervisorNihii?: string,
@@ -135,10 +135,10 @@ export class fhcEattestvcontrollerApi {
       (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
       (hcpLastName ? "&hcpLastName=" + hcpLastName : "") +
       (hcpCbe ? "&hcpCbe=" + hcpCbe : "") +
-      (treatmentReason ? "&treatmentReason=" + treatmentReason : "") +
       (patientFirstName ? "&patientFirstName=" + patientFirstName : "") +
       (patientLastName ? "&patientLastName=" + patientLastName : "") +
       (patientGender ? "&patientGender=" + patientGender : "") +
+      (treatmentReason ? "&treatmentReason=" + treatmentReason : "") +
       (date ? "&date=" + date : "") +
       (traineeSupervisorSsin ? "&traineeSupervisorSsin=" + traineeSupervisorSsin : "") +
       (traineeSupervisorNihii ? "&traineeSupervisorNihii=" + traineeSupervisorNihii : "") +
@@ -170,11 +170,11 @@ export class fhcEattestvcontrollerApi {
     hcpFirstName: string,
     hcpLastName: string,
     hcpCbe: string,
-    treatmentReason: string,
     patientFirstName: string,
     patientLastName: string,
     patientGender: string,
     attest: models.Eattest,
+    treatmentReason?: string,
     date?: number,
     traineeSupervisorSsin?: string,
     traineeSupervisorNihii?: string,
@@ -197,10 +197,10 @@ export class fhcEattestvcontrollerApi {
       (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
       (hcpLastName ? "&hcpLastName=" + hcpLastName : "") +
       (hcpCbe ? "&hcpCbe=" + hcpCbe : "") +
-      (treatmentReason ? "&treatmentReason=" + treatmentReason : "") +
       (patientFirstName ? "&patientFirstName=" + patientFirstName : "") +
       (patientLastName ? "&patientLastName=" + patientLastName : "") +
       (patientGender ? "&patientGender=" + patientGender : "") +
+      (treatmentReason ? "&treatmentReason=" + treatmentReason : "") +
       (date ? "&date=" + date : "") +
       (traineeSupervisorSsin ? "&traineeSupervisorSsin=" + traineeSupervisorSsin : "") +
       (traineeSupervisorNihii ? "&traineeSupervisorNihii=" + traineeSupervisorNihii : "") +

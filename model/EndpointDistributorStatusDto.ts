@@ -24,19 +24,11 @@
 
 import * as models from "./models"
 
-export class MemberDataResponse {
+export class EndpointDistributorStatusDto {
   constructor(json: JSON | any) {
-    Object.assign(this as MemberDataResponse, json)
+    Object.assign(this as EndpointDistributorStatusDto, json)
   }
-  assertions?: Array<models.Assertion>
+  bcpMode?: boolean
 
-  commonOutput?: models.CommonOutputType
-
-  errors?: Array<models.FaultType>
-
-  myCarenetErrors?: Array<models.MycarenetError>
-
-  mycarenetConversation?: models.MycarenetConversation
-
-  status?: models.Status
+  mustPoll?: boolean
 }
