@@ -42,6 +42,19 @@ export class fhcHubcontrollerApi {
     else throw Error("api-error" + e.status)
   }
 
+  convertKmehrXMLtoJSONUsingPOST(message: string): Promise<models.Kmehrmessage | any> {
+    let _body = null
+    _body = message
+
+    const _url = this.host + "/hub/convertKmehrXMLtoJSON" + "?ts=" + new Date().getTime()
+    let headers = this.headers
+    headers = headers
+      .filter(h => h.header !== "Content-Type")
+      .concat(new XHR.Header("Content-Type", "application/xml"))
+    return XHR.sendCommand("POST", _url, headers, _body)
+      .then(doc => new models.Kmehrmessage(doc.body as JSON))
+      .catch(err => this.handleError(err))
+  }
   getAccessRightUsingGET(
     endpoint: string,
     xFHCKeystoreId: string,
