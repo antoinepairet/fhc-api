@@ -36,7 +36,7 @@ export class ContentType {
 
   compoundprescription?: models.CompoundprescriptionType
 
-  date?: Date
+  date?: models.PrescriptionDateType
 
   decimal?: number
 
