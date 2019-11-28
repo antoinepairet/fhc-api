@@ -28,7 +28,9 @@ export class Status {
   constructor(json: JSON | any) {
     Object.assign(this as Status, json)
   }
-  code1?: string
+  statusCode?: models.StatusCode
 
-  code2?: string
+  statusDetail?: models.StatusDetail
+
+  statusMessage?: string
 }

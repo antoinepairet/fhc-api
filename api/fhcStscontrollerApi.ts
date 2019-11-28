@@ -55,7 +55,20 @@ export class fhcStscontrollerApi {
       .then(doc => JSON.parse(JSON.stringify(doc.body)))
       .catch(err => this.handleError(err))
   }
-  checkTokenValidUsingGET(
+  checkTokenValidUsingGET(xFHCTokenId: string): Promise<boolean | any> {
+    let _body = null
+
+    const _url = this.host + "/sts/token/check" + "?ts=" + new Date().getTime()
+    let headers = this.headers
+    headers = headers
+      .filter(h => h.header !== "Content-Type")
+      .concat(new XHR.Header("Content-Type", "application/json"))
+    headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId))
+    return XHR.sendCommand("GET", _url, headers, _body)
+      .then(doc => JSON.parse(JSON.stringify(doc.body)))
+      .catch(err => this.handleError(err))
+  }
+  getBearerTokenUsingGET(
     xFHCTokenId: string,
     xFHCPassPhrase: string,
     ssin: string,
@@ -78,19 +91,6 @@ export class fhcStscontrollerApi {
     headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId))
     return XHR.sendCommand("GET", _url, headers, _body)
       .then(doc => new models.BearerToken(doc.body as JSON))
-      .catch(err => this.handleError(err))
-  }
-  checkTokenValidUsingGET1(xFHCTokenId: string): Promise<boolean | any> {
-    let _body = null
-
-    const _url = this.host + "/sts/token/check" + "?ts=" + new Date().getTime()
-    let headers = this.headers
-    headers = headers
-      .filter(h => h.header !== "Content-Type")
-      .concat(new XHR.Header("Content-Type", "application/json"))
-    headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId))
-    return XHR.sendCommand("GET", _url, headers, _body)
-      .then(doc => JSON.parse(JSON.stringify(doc.body)))
       .catch(err => this.handleError(err))
   }
   getKeystoreInfoUsingGET(
