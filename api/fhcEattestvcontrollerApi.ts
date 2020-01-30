@@ -42,7 +42,7 @@ export class fhcEattestvcontrollerApi {
     else throw Error("api-error" + e.status)
   }
 
-  cancelAttesWithResponseUsingDELETE(
+  cancelAttestWithResponseUsingDELETE(
     patientSsin: string,
     xFHCKeystoreId: string,
     xFHCTokenId: string,
