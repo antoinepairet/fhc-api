@@ -34,8 +34,6 @@ export class SamlTokenResult {
 
   token?: string
 
-  tokenBase64?: string
-
   tokenId?: string
 
   validity?: number

@@ -54,7 +54,8 @@ export class fhcMemberdatacontrollerApi {
     hcpQuality?: string,
     date?: number,
     endDate?: number,
-    hospitalized?: boolean
+    hospitalized?: boolean,
+    requestType?: string
   ): Promise<models.MemberDataResponse | any> {
     let _body = null
 
@@ -71,7 +72,8 @@ export class fhcMemberdatacontrollerApi {
       (hcpQuality ? "&hcpQuality=" + hcpQuality : "") +
       (date ? "&date=" + date : "") +
       (endDate ? "&endDate=" + endDate : "") +
-      (hospitalized ? "&hospitalized=" + hospitalized : "")
+      (hospitalized ? "&hospitalized=" + hospitalized : "") +
+      (requestType ? "&requestType=" + requestType : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")
@@ -94,7 +96,8 @@ export class fhcMemberdatacontrollerApi {
     hcpQuality?: string,
     date?: number,
     endDate?: number,
-    hospitalized?: boolean
+    hospitalized?: boolean,
+    requestType?: string
   ): Promise<models.MemberDataResponse | any> {
     let _body = null
 
@@ -109,7 +112,8 @@ export class fhcMemberdatacontrollerApi {
       (hcpQuality ? "&hcpQuality=" + hcpQuality : "") +
       (date ? "&date=" + date : "") +
       (endDate ? "&endDate=" + endDate : "") +
-      (hospitalized ? "&hospitalized=" + hospitalized : "")
+      (hospitalized ? "&hospitalized=" + hospitalized : "") +
+      (requestType ? "&requestType=" + requestType : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")
@@ -134,7 +138,8 @@ export class fhcMemberdatacontrollerApi {
     hcpQuality?: string,
     date?: number,
     endDate?: number,
-    hospitalized?: boolean
+    hospitalized?: boolean,
+    requestType?: string
   ): Promise<models.MemberDataResponse | any> {
     let _body = null
     _body = facets
@@ -152,7 +157,8 @@ export class fhcMemberdatacontrollerApi {
       (hcpQuality ? "&hcpQuality=" + hcpQuality : "") +
       (date ? "&date=" + date : "") +
       (endDate ? "&endDate=" + endDate : "") +
-      (hospitalized ? "&hospitalized=" + hospitalized : "")
+      (hospitalized ? "&hospitalized=" + hospitalized : "") +
+      (requestType ? "&requestType=" + requestType : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")
@@ -176,7 +182,8 @@ export class fhcMemberdatacontrollerApi {
     hcpQuality?: string,
     date?: number,
     endDate?: number,
-    hospitalized?: boolean
+    hospitalized?: boolean,
+    requestType?: string
   ): Promise<models.MemberDataResponse | any> {
     let _body = null
     _body = facets
@@ -192,7 +199,8 @@ export class fhcMemberdatacontrollerApi {
       (hcpQuality ? "&hcpQuality=" + hcpQuality : "") +
       (date ? "&date=" + date : "") +
       (endDate ? "&endDate=" + endDate : "") +
-      (hospitalized ? "&hospitalized=" + hospitalized : "")
+      (hospitalized ? "&hospitalized=" + hospitalized : "") +
+      (requestType ? "&requestType=" + requestType : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")
