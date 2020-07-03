@@ -800,6 +800,8 @@ export class fhcHubcontrollerApi {
     hcpZip: string,
     patientSsin: string,
     hubPackageId?: string,
+    startDate?: Date,
+    endDate?: Date,
     patientEidCardNumber?: string,
     patientIsiCardNumber?: string
   ): Promise<models.PutTherapeuticLinkResponse | any> {
@@ -819,7 +821,9 @@ export class fhcHubcontrollerApi {
       (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
       (hcpZip ? "&hcpZip=" + hcpZip : "") +
       (patientEidCardNumber ? "&patientEidCardNumber=" + patientEidCardNumber : "") +
-      (patientIsiCardNumber ? "&patientIsiCardNumber=" + patientIsiCardNumber : "")
+      (patientIsiCardNumber ? "&patientIsiCardNumber=" + patientIsiCardNumber : "") +
+      (startDate ? "&from=" + startDate.getTime() + "" : "") +
+      (endDate ? "&to=" + endDate.getTime() + "" : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")

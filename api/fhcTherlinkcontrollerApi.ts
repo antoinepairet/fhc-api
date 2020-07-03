@@ -224,8 +224,8 @@ export class fhcTherlinkcontrollerApi {
       (patientLastName ? "&patientLastName=" + patientLastName : "") +
       (eidCardNumber ? "&eidCardNumber=" + eidCardNumber : "") +
       (isiCardNumber ? "&isiCardNumber=" + isiCardNumber : "") +
-      (start ? "&start=" + start : "") +
-      (end ? "&end=" + end : "") +
+      (start ? "&start=" + start.getTime() : "") +
+      (end ? "&end=" + end.getTime() : "") +
       (therLinkType ? "&therLinkType=" + therLinkType : "") +
       (comment ? "&comment=" + comment : "") +
       (sign ? "&sign=" + sign : "") +
