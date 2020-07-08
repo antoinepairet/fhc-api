@@ -25,10 +25,11 @@
 import { XHR } from "./XHR"
 import * as models from "../model/models"
 
-export class fhcStscontrollerApi {
+export class fhcStsControllerApi {
   host: string
   headers: Array<XHR.Header>
   fetchImpl?: (input: RequestInfo, init?: RequestInit) => Promise<Response>
+
   constructor(
     host: string,
     headers: any,
@@ -43,9 +44,8 @@ export class fhcStscontrollerApi {
     this.headers = h
   }
 
-  handleError(e: XHR.Data) {
-    if (e.status == 401) throw Error("auth-failed")
-    else throw Error("api-error" + e.status)
+  handleError(e: XHR.XHRError) {
+    throw e
   }
 
   checkKeystoreExistUsingGET(xFHCKeystoreId: string): Promise<boolean | any> {
@@ -56,7 +56,7 @@ export class fhcStscontrollerApi {
     headers = headers
       .filter(h => h.header !== "Content-Type")
       .concat(new XHR.Header("Content-Type", "application/json"))
-    headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId))
+    xFHCKeystoreId && (headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId)))
     return XHR.sendCommand("GET", _url, headers, _body, this.fetchImpl)
       .then(doc => JSON.parse(JSON.stringify(doc.body)))
       .catch(err => this.handleError(err))
@@ -69,7 +69,7 @@ export class fhcStscontrollerApi {
     headers = headers
       .filter(h => h.header !== "Content-Type")
       .concat(new XHR.Header("Content-Type", "application/json"))
-    headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId))
+    xFHCTokenId && (headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId)))
     return XHR.sendCommand("GET", _url, headers, _body, this.fetchImpl)
       .then(doc => JSON.parse(JSON.stringify(doc.body)))
       .catch(err => this.handleError(err))
@@ -92,9 +92,9 @@ export class fhcStscontrollerApi {
     headers = headers
       .filter(h => h.header !== "Content-Type")
       .concat(new XHR.Header("Content-Type", "application/json"))
-    headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId))
-    headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase))
-    headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId))
+    xFHCTokenId && (headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId)))
+    xFHCPassPhrase && (headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase)))
+    xFHCKeystoreId && (headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId)))
     return XHR.sendCommand("GET", _url, headers, _body, this.fetchImpl)
       .then(doc => new models.BearerToken(doc.body as JSON))
       .catch(err => this.handleError(err))
@@ -114,26 +114,61 @@ export class fhcStscontrollerApi {
     headers = headers
       .filter(h => h.header !== "Content-Type")
       .concat(new XHR.Header("Content-Type", "application/json"))
-    headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase))
+    xFHCPassPhrase && (headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase)))
     return XHR.sendCommand("GET", _url, headers, _body, this.fetchImpl)
       .then(doc => new models.CertificateInfo(doc.body as JSON))
       .catch(err => this.handleError(err))
   }
-  registerTokenUsingPOST(token: string, xFHCTokenId: string): Promise<any | Boolean> {
+  registerTokenUsingPOST(
+    token: string,
+    xFHCTokenId: string,
+    quality?: string
+  ): Promise<any | Boolean> {
     let _body = null
     _body = token
 
-    const _url = this.host + "/sts/token" + "?ts=" + new Date().getTime()
+    const _url =
+      this.host +
+      "/sts/token" +
+      "?ts=" +
+      new Date().getTime() +
+      (quality ? "&quality=" + quality : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")
       .concat(new XHR.Header("Content-Type", "application/json"))
-    headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId))
+    xFHCTokenId && (headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId)))
     return XHR.sendCommand("POST", _url, headers, _body, this.fetchImpl)
       .then(doc => true)
       .catch(err => this.handleError(err))
   }
   requestTokenUsingGET(
+    xFHCPassPhrase: string,
+    ssin: string,
+    xFHCKeystoreId: string,
+    quality: string,
+    xFHCTokenId?: string
+  ): Promise<models.SamlTokenResult | any> {
+    let _body = null
+
+    const _url =
+      this.host +
+      "/sts/token/{quality}".replace("{quality}", quality + "") +
+      "?ts=" +
+      new Date().getTime() +
+      (ssin ? "&ssin=" + ssin : "")
+    let headers = this.headers
+    headers = headers
+      .filter(h => h.header !== "Content-Type")
+      .concat(new XHR.Header("Content-Type", "application/json"))
+    xFHCPassPhrase && (headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase)))
+    xFHCKeystoreId && (headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId)))
+    xFHCTokenId && (headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId)))
+    return XHR.sendCommand("GET", _url, headers, _body, this.fetchImpl)
+      .then(doc => new models.SamlTokenResult(doc.body as JSON))
+      .catch(err => this.handleError(err))
+  }
+  requestTokenUsingGET1(
     xFHCPassPhrase: string,
     ssin: string,
     xFHCKeystoreId: string,
@@ -157,8 +192,8 @@ export class fhcStscontrollerApi {
     headers = headers
       .filter(h => h.header !== "Content-Type")
       .concat(new XHR.Header("Content-Type", "application/json"))
-    headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase))
-    headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId))
+    xFHCPassPhrase && (headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase)))
+    xFHCKeystoreId && (headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId)))
     xFHCTokenId && (headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId)))
     return XHR.sendCommand("GET", _url, headers, _body, this.fetchImpl)
       .then(doc => new models.SamlTokenResult(doc.body as JSON))
