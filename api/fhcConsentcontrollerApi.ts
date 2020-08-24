@@ -135,7 +135,7 @@ export class fhcConsentcontrollerApi {
 
     const _url =
       this.host +
-      "/consent/revoke/{patientSsin}" +
+      "/consent/revoke" +
       "?ts=" +
       new Date().getTime() +
       (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +

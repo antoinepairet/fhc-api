@@ -124,25 +124,6 @@ export class fhcEhboxvcontrollerApi {
       .then(doc => new models.MessageResponse(doc.body as JSON))
       .catch(err => this.handleError(err))
   }
-  getInfosUsingGET1(
-    xFHCKeystoreId: string,
-    xFHCTokenId: string,
-    xFHCPassPhrase: string
-  ): Promise<models.BoxInfo | any> {
-    let _body = null
-
-    const _url = this.host + "/ehboxV3" + "?ts=" + new Date().getTime()
-    let headers = this.headers
-    headers = headers
-      .filter(h => h.header !== "Content-Type")
-      .concat(new XHR.Header("Content-Type", "application/json"))
-    headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId))
-    headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId))
-    headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase))
-    return XHR.sendCommand("GET", _url, headers, _body)
-      .then(doc => new models.BoxInfo(doc.body as JSON))
-      .catch(err => this.handleError(err))
-  }
   loadMessagesUsingGET2(
     xFHCKeystoreId: string,
     xFHCTokenId: string,
@@ -241,37 +222,6 @@ export class fhcEhboxvcontrollerApi {
     const _url =
       this.host +
       "/ehboxV3/2ebox" +
-      "?ts=" +
-      new Date().getTime() +
-      (publicationReceipt ? "&publicationReceipt=" + publicationReceipt : "") +
-      (receptionReceipt ? "&receptionReceipt=" + receptionReceipt : "") +
-      (readReceipt ? "&readReceipt=" + readReceipt : "")
-    let headers = this.headers
-    headers = headers
-      .filter(h => h.header !== "Content-Type")
-      .concat(new XHR.Header("Content-Type", "application/json"))
-    headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId))
-    headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId))
-    headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase))
-    return XHR.sendCommand("POST", _url, headers, _body)
-      .then(doc => new models.MessageOperationResponse(doc.body as JSON))
-      .catch(err => this.handleError(err))
-  }
-  sendMessageUsingPOST1(
-    xFHCKeystoreId: string,
-    xFHCTokenId: string,
-    xFHCPassPhrase: string,
-    message: models.DocumentMessage,
-    publicationReceipt: boolean,
-    receptionReceipt: boolean,
-    readReceipt: boolean
-  ): Promise<models.MessageOperationResponse | any> {
-    let _body = null
-    _body = message
-
-    const _url =
-      this.host +
-      "/ehboxV3" +
       "?ts=" +
       new Date().getTime() +
       (publicationReceipt ? "&publicationReceipt=" + publicationReceipt : "") +

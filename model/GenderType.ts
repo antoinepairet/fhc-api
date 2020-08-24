@@ -28,13 +28,9 @@ export class GenderType {
   constructor(json: JSON | any) {
     Object.assign(this as GenderType, json)
   }
-  genderCode?: string
-
   modificationDate?: string
 
   origin?: GenderType.OriginEnum
-
-  startDate?: Date
 
   value?: GenderType.ValueEnum
 }

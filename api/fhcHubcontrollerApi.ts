@@ -168,8 +168,8 @@ export class fhcHubcontrollerApi {
       (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
       (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +
       (hcpSsin ? "&hcpSsin=" + hcpSsin : "") +
-      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
       (hcpZip ? "&hcpZip=" + hcpZip : "") +
+      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
       (from ? "&from=" + from : "") +
       (to ? "&to=" + to : "") +
       (authorNihii ? "&authorNihii=" + authorNihii : "") +
@@ -216,8 +216,8 @@ export class fhcHubcontrollerApi {
       (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
       (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +
       (hcpSsin ? "&hcpSsin=" + hcpSsin : "") +
-      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
-      (hcpZip ? "&hcpZip=" + hcpZip : "")
+      (hcpZip ? "&hcpZip=" + hcpZip : "") +
+      (hubPackageId ? "&hubPackageId=" + hubPackageId : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")
@@ -254,8 +254,8 @@ export class fhcHubcontrollerApi {
       (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
       (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +
       (hcpSsin ? "&hcpSsin=" + hcpSsin : "") +
-      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
-      (hcpZip ? "&hcpZip=" + hcpZip : "")
+      (hcpZip ? "&hcpZip=" + hcpZip : "") +
+      (hubPackageId ? "&hubPackageId=" + hubPackageId : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")
@@ -296,8 +296,8 @@ export class fhcHubcontrollerApi {
       (hcpLastName ? "&hcpLastName=" + hcpLastName : "") +
       (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
       (hcpSsin ? "&hcpSsin=" + hcpSsin : "") +
-      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
       (hcpZip ? "&hcpZip=" + hcpZip : "") +
+      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
       (therLinkType ? "&therLinkType=" + therLinkType : "") +
       (from ? "&from=" + from : "") +
       (to ? "&to=" + to : "")
@@ -346,12 +346,12 @@ export class fhcHubcontrollerApi {
       (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
       (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +
       (hcpSsin ? "&hcpSsin=" + hcpSsin : "") +
-      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
       (hcpZip ? "&hcpZip=" + hcpZip : "") +
+      (id ? "&id=" + id : "") +
+      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
       (breakTheGlassReason ? "&breakTheGlassReason=" + breakTheGlassReason : "") +
       (externalHubId ? "&externalHubId=" + externalHubId : "") +
-      (externalHubName ? "&externalHubName=" + externalHubName : "") +
-      (id ? "&id=" + id : "")
+      (externalHubName ? "&externalHubName=" + externalHubName : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")
@@ -395,10 +395,10 @@ export class fhcHubcontrollerApi {
       (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
       (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +
       (hcpSsin ? "&hcpSsin=" + hcpSsin : "") +
-      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
       (hcpZip ? "&hcpZip=" + hcpZip : "") +
-      (breakTheGlassReason ? "&breakTheGlassReason=" + breakTheGlassReason : "") +
-      (id ? "&id=" + id : "")
+      (id ? "&id=" + id : "") +
+      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
+      (breakTheGlassReason ? "&breakTheGlassReason=" + breakTheGlassReason : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")
@@ -442,10 +442,10 @@ export class fhcHubcontrollerApi {
       (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
       (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +
       (hcpSsin ? "&hcpSsin=" + hcpSsin : "") +
-      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
       (hcpZip ? "&hcpZip=" + hcpZip : "") +
-      (breakTheGlassReason ? "&breakTheGlassReason=" + breakTheGlassReason : "") +
-      (id ? "&id=" + id : "")
+      (id ? "&id=" + id : "") +
+      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
+      (breakTheGlassReason ? "&breakTheGlassReason=" + breakTheGlassReason : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")
@@ -491,12 +491,12 @@ export class fhcHubcontrollerApi {
       (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
       (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +
       (hcpSsin ? "&hcpSsin=" + hcpSsin : "") +
-      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
       (hcpZip ? "&hcpZip=" + hcpZip : "") +
+      (id ? "&id=" + id : "") +
+      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
       (breakTheGlassReason ? "&breakTheGlassReason=" + breakTheGlassReason : "") +
       (externalHubId ? "&externalHubId=" + externalHubId : "") +
-      (externalHubName ? "&externalHubName=" + externalHubName : "") +
-      (id ? "&id=" + id : "")
+      (externalHubName ? "&externalHubName=" + externalHubName : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")
@@ -539,8 +539,8 @@ export class fhcHubcontrollerApi {
       (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
       (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +
       (hcpSsin ? "&hcpSsin=" + hcpSsin : "") +
-      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
       (hcpZip ? "&hcpZip=" + hcpZip : "") +
+      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
       (from ? "&from=" + from : "") +
       (to ? "&to=" + to : "") +
       (authorNihii ? "&authorNihii=" + authorNihii : "") +
@@ -592,9 +592,9 @@ export class fhcHubcontrollerApi {
       (sv ? "&sv=" + sv : "") +
       (sl ? "&sl=" + sl : "") +
       (value ? "&value=" + value : "") +
+      (accessRight ? "&accessRight=" + accessRight : "") +
       (accessNihii ? "&accessNihii=" + accessNihii : "") +
       (accessSsin ? "&accessSsin=" + accessSsin : "") +
-      (accessRight ? "&accessRight=" + accessRight : "") +
       (hubPackageId ? "&hubPackageId=" + hubPackageId : "")
     let headers = this.headers
     headers = headers
@@ -638,11 +638,11 @@ export class fhcHubcontrollerApi {
       (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
       (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +
       (hcpSsin ? "&hcpSsin=" + hcpSsin : "") +
-      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
       (hcpZip ? "&hcpZip=" + hcpZip : "") +
       (firstName ? "&firstName=" + firstName : "") +
       (gender ? "&gender=" + gender : "") +
-      (dateOfBirth ? "&dateOfBirth=" + dateOfBirth : "")
+      (dateOfBirth ? "&dateOfBirth=" + dateOfBirth : "") +
+      (hubPackageId ? "&hubPackageId=" + hubPackageId : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")
@@ -685,8 +685,8 @@ export class fhcHubcontrollerApi {
       (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
       (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +
       (hcpSsin ? "&hcpSsin=" + hcpSsin : "") +
-      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
       (hcpZip ? "&hcpZip=" + hcpZip : "") +
+      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
       (hubApplication ? "&hubApplication=" + hubApplication : "")
     let headers = this.headers
     headers = headers
@@ -730,8 +730,8 @@ export class fhcHubcontrollerApi {
       (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
       (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +
       (hcpSsin ? "&hcpSsin=" + hcpSsin : "") +
-      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
       (hcpZip ? "&hcpZip=" + hcpZip : "") +
+      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
       (hubApplication ? "&hubApplication=" + hubApplication : "")
     let headers = this.headers
     headers = headers
@@ -771,8 +771,8 @@ export class fhcHubcontrollerApi {
       (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
       (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +
       (hcpSsin ? "&hcpSsin=" + hcpSsin : "") +
-      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
       (hcpZip ? "&hcpZip=" + hcpZip : "") +
+      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
       (patientEidCardNumber ? "&patientEidCardNumber=" + patientEidCardNumber : "") +
       (patientIsiCardNumber ? "&patientIsiCardNumber=" + patientIsiCardNumber : "")
     let headers = this.headers
@@ -814,8 +814,8 @@ export class fhcHubcontrollerApi {
       (hcpLastName ? "&hcpLastName=" + hcpLastName : "") +
       (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
       (hcpSsin ? "&hcpSsin=" + hcpSsin : "") +
-      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
       (hcpZip ? "&hcpZip=" + hcpZip : "") +
+      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
       (patientEidCardNumber ? "&patientEidCardNumber=" + patientEidCardNumber : "") +
       (patientIsiCardNumber ? "&patientIsiCardNumber=" + patientIsiCardNumber : "")
     let headers = this.headers
@@ -903,8 +903,8 @@ export class fhcHubcontrollerApi {
       (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
       (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +
       (hcpSsin ? "&hcpSsin=" + hcpSsin : "") +
-      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
       (hcpZip ? "&hcpZip=" + hcpZip : "") +
+      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
       (patientEidCardNumber ? "&patientEidCardNumber=" + patientEidCardNumber : "") +
       (patientIsiCardNumber ? "&patientIsiCardNumber=" + patientIsiCardNumber : "")
     let headers = this.headers
@@ -946,8 +946,8 @@ export class fhcHubcontrollerApi {
       (hcpLastName ? "&hcpLastName=" + hcpLastName : "") +
       (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
       (hcpSsin ? "&hcpSsin=" + hcpSsin : "") +
-      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
       (hcpZip ? "&hcpZip=" + hcpZip : "") +
+      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
       (patientEidCardNumber ? "&patientEidCardNumber=" + patientEidCardNumber : "") +
       (patientIsiCardNumber ? "&patientIsiCardNumber=" + patientIsiCardNumber : "")
     let headers = this.headers
@@ -993,10 +993,10 @@ export class fhcHubcontrollerApi {
       (hcpFirstName ? "&hcpFirstName=" + hcpFirstName : "") +
       (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +
       (hcpSsin ? "&hcpSsin=" + hcpSsin : "") +
-      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
       (hcpZip ? "&hcpZip=" + hcpZip : "") +
-      (breakTheGlassReason ? "&breakTheGlassReason=" + breakTheGlassReason : "") +
-      (id ? "&id=" + id : "")
+      (id ? "&id=" + id : "") +
+      (hubPackageId ? "&hubPackageId=" + hubPackageId : "") +
+      (breakTheGlassReason ? "&breakTheGlassReason=" + breakTheGlassReason : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")

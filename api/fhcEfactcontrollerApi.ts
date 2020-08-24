@@ -50,8 +50,7 @@ export class fhcEfactcontrollerApi {
     ssin: string,
     firstName: string,
     lastName: string,
-    valueHashes: Array<string>,
-    isGuardPost?: boolean
+    valueHashes: Array<string>
   ): Promise<boolean | any> {
     let _body = null
     _body = valueHashes
@@ -63,8 +62,7 @@ export class fhcEfactcontrollerApi {
       new Date().getTime() +
       (ssin ? "&ssin=" + ssin : "") +
       (firstName ? "&firstName=" + firstName : "") +
-      (lastName ? "&lastName=" + lastName : "") +
-      (isGuardPost ? "&isGuardPost=" + isGuardPost : "")
+      (lastName ? "&lastName=" + lastName : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")
@@ -84,8 +82,7 @@ export class fhcEfactcontrollerApi {
     ssin: string,
     firstName: string,
     lastName: string,
-    valueHashes: Array<string>,
-    isGuardPost?: boolean
+    valueHashes: Array<string>
   ): Promise<boolean | any> {
     let _body = null
     _body = valueHashes
@@ -97,8 +94,7 @@ export class fhcEfactcontrollerApi {
       new Date().getTime() +
       (ssin ? "&ssin=" + ssin : "") +
       (firstName ? "&firstName=" + firstName : "") +
-      (lastName ? "&lastName=" + lastName : "") +
-      (isGuardPost ? "&isGuardPost=" + isGuardPost : "")
+      (lastName ? "&lastName=" + lastName : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")
@@ -119,8 +115,7 @@ export class fhcEfactcontrollerApi {
     ssin: string,
     firstName: string,
     lastName: string,
-    limit: number,
-    isGuardPost: boolean
+    limit: number
   ): Promise<Array<models.EfactMessage> | any> {
     let _body = null
 
@@ -134,8 +129,7 @@ export class fhcEfactcontrollerApi {
       (ssin ? "&ssin=" + ssin : "") +
       (firstName ? "&firstName=" + firstName : "") +
       (lastName ? "&lastName=" + lastName : "") +
-      (limit ? "&limit=" + limit : "") +
-      (isGuardPost ? "&isGuardPost=" + isGuardPost : "")
+      (limit ? "&limit=" + limit : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")
@@ -192,18 +186,12 @@ export class fhcEfactcontrollerApi {
     xFHCKeystoreId: string,
     xFHCTokenId: string,
     xFHCPassPhrase: string,
-    batch: models.InvoicesBatch,
-    isGuardPost?: boolean
+    batch: models.InvoicesBatch
   ): Promise<models.EfactSendResponse | any> {
     let _body = null
     _body = batch
 
-    const _url =
-      this.host +
-      "/efact/batch" +
-      "?ts=" +
-      new Date().getTime() +
-      (isGuardPost ? "&isGuardPost=" + isGuardPost : "")
+    const _url = this.host + "/efact/batch" + "?ts=" + new Date().getTime()
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")

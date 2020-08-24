@@ -24,25 +24,21 @@
 
 import * as models from "./models"
 
-export class StartSubscriptionResultWithResponse {
+export class MemberDataBatchResponse {
   constructor(json: JSON | any) {
-    Object.assign(this as StartSubscriptionResultWithResponse, json)
+    Object.assign(this as MemberDataBatchResponse, json)
   }
-  commonOutput?: models.CommonOutput
+  assertions?: Array<models.Assertion>
 
-  errors?: Array<models.MycarenetError>
+  errors?: Array<models.FaultType>
 
-  genericErrors?: Array<models.FaultType>
+  inResponseTo?: string
 
-  inscriptionDate?: number
+  issuer?: string
 
-  kmehrMessage?: Array<string>
+  myCarenetErrors?: Array<models.MycarenetError>
 
-  mycarenetConversation?: models.MycarenetConversation
+  responseId?: string
 
-  reference?: string
-
-  subscriptionsStartDate?: number
-
-  xades?: Array<string>
+  status?: models.MdaStatus
 }

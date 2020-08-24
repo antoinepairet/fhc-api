@@ -65,13 +65,13 @@ export class fhcMhmcontrollerApi {
       new Date().getTime() +
       (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +
       (hcpName ? "&hcpName=" + hcpName : "") +
-      (patientSsin ? "&patientSsin=" + patientSsin : "") +
       (patientFirstName ? "&patientFirstName=" + patientFirstName : "") +
       (patientLastName ? "&patientLastName=" + patientLastName : "") +
       (patientGender ? "&patientGender=" + patientGender : "") +
+      (reference ? "&reference=" + reference : "") +
+      (patientSsin ? "&patientSsin=" + patientSsin : "") +
       (io ? "&io=" + io : "") +
-      (ioMembership ? "&ioMembership=" + ioMembership : "") +
-      (reference ? "&reference=" + reference : "")
+      (ioMembership ? "&ioMembership=" + ioMembership : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")
@@ -109,16 +109,16 @@ export class fhcMhmcontrollerApi {
       new Date().getTime() +
       (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +
       (hcpName ? "&hcpName=" + hcpName : "") +
-      (patientSsin ? "&patientSsin=" + patientSsin : "") +
       (patientFirstName ? "&patientFirstName=" + patientFirstName : "") +
       (patientLastName ? "&patientLastName=" + patientLastName : "") +
       (patientGender ? "&patientGender=" + patientGender : "") +
-      (io ? "&io=" + io : "") +
-      (ioMembership ? "&ioMembership=" + ioMembership : "") +
       (reference ? "&reference=" + reference : "") +
       (endDate ? "&endDate=" + endDate : "") +
       (reason ? "&reason=" + reason : "") +
-      (decisionType ? "&decisionType=" + decisionType : "")
+      (decisionType ? "&decisionType=" + decisionType : "") +
+      (patientSsin ? "&patientSsin=" + patientSsin : "") +
+      (io ? "&io=" + io : "") +
+      (ioMembership ? "&ioMembership=" + ioMembership : "")
     let headers = this.headers
     headers = headers
       .filter(h => h.header !== "Content-Type")
@@ -142,11 +142,11 @@ export class fhcMhmcontrollerApi {
     startDate: number,
     isTrial: boolean,
     signatureType: string,
-    isRecovery: boolean,
-    isTestForNotify: boolean,
     patientSsin?: string,
     io?: string,
-    ioMembership?: string
+    ioMembership?: string,
+    isRecovery?: boolean,
+    isTestForNotify?: boolean
   ): Promise<models.StartSubscriptionResultWithResponse | any> {
     let _body = null
 
@@ -157,15 +157,15 @@ export class fhcMhmcontrollerApi {
       new Date().getTime() +
       (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +
       (hcpName ? "&hcpName=" + hcpName : "") +
-      (patientSsin ? "&patientSsin=" + patientSsin : "") +
       (patientFirstName ? "&patientFirstName=" + patientFirstName : "") +
       (patientLastName ? "&patientLastName=" + patientLastName : "") +
       (patientGender ? "&patientGender=" + patientGender : "") +
-      (io ? "&io=" + io : "") +
-      (ioMembership ? "&ioMembership=" + ioMembership : "") +
       (startDate ? "&startDate=" + startDate : "") +
       (isTrial ? "&isTrial=" + isTrial : "") +
       (signatureType ? "&signatureType=" + signatureType : "") +
+      (patientSsin ? "&patientSsin=" + patientSsin : "") +
+      (io ? "&io=" + io : "") +
+      (ioMembership ? "&ioMembership=" + ioMembership : "") +
       (isRecovery ? "&isRecovery=" + isRecovery : "") +
       (isTestForNotify ? "&isTestForNotify=" + isTestForNotify : "")
     let headers = this.headers
