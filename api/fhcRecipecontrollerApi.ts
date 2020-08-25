@@ -42,6 +42,39 @@ export class fhcRecipecontrollerApi {
     else throw Error("api-error" + e.status)
   }
 
+  createPrescriptionUsingPOST(
+    xFHCKeystoreId: string,
+    xFHCTokenId: string,
+    hcpQuality: string,
+    hcpNihii: string,
+    hcpSsin: string,
+    hcpName: string,
+    xFHCPassPhrase: string,
+    prescription: models.PrescriptionRequest
+  ): Promise<models.Prescription | any> {
+    let _body = null
+    _body = prescription
+
+    const _url =
+      this.host +
+      "/recipe" +
+      "?ts=" +
+      new Date().getTime() +
+      (hcpQuality ? "&hcpQuality=" + hcpQuality : "") +
+      (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +
+      (hcpSsin ? "&hcpSsin=" + hcpSsin : "") +
+      (hcpName ? "&hcpName=" + hcpName : "")
+    let headers = this.headers
+    headers = headers
+      .filter(h => h.header !== "Content-Type")
+      .concat(new XHR.Header("Content-Type", "application/json"))
+    headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId))
+    headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId))
+    headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase))
+    return XHR.sendCommand("POST", _url, headers, _body)
+      .then(doc => new models.Prescription(doc.body as JSON))
+      .catch(err => this.handleError(err))
+  }
   createPrescriptionV4UsingPOST(
     xFHCKeystoreId: string,
     xFHCTokenId: string,
@@ -200,6 +233,37 @@ export class fhcRecipecontrollerApi {
       .then(doc => (doc.body as Array<JSON>).map(it => new models.Prescription(it)))
       .catch(err => this.handleError(err))
   }
+  listOpenPrescriptionsUsingGET(
+    xFHCKeystoreId: string,
+    xFHCTokenId: string,
+    hcpQuality: string,
+    hcpNihii: string,
+    hcpSsin: string,
+    hcpName: string,
+    xFHCPassPhrase: string
+  ): Promise<Array<models.Prescription> | any> {
+    let _body = null
+
+    const _url =
+      this.host +
+      "/recipe" +
+      "?ts=" +
+      new Date().getTime() +
+      (hcpQuality ? "&hcpQuality=" + hcpQuality : "") +
+      (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +
+      (hcpSsin ? "&hcpSsin=" + hcpSsin : "") +
+      (hcpName ? "&hcpName=" + hcpName : "")
+    let headers = this.headers
+    headers = headers
+      .filter(h => h.header !== "Content-Type")
+      .concat(new XHR.Header("Content-Type", "application/json"))
+    headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId))
+    headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId))
+    headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase))
+    return XHR.sendCommand("GET", _url, headers, _body)
+      .then(doc => (doc.body as Array<JSON>).map(it => new models.Prescription(it)))
+      .catch(err => this.handleError(err))
+  }
   revokePrescriptionUsingDELETE(
     xFHCKeystoreId: string,
     xFHCTokenId: string,
@@ -242,10 +306,10 @@ export class fhcRecipecontrollerApi {
     hcpSsin: string,
     hcpName: string,
     xFHCPassPhrase: string,
-    patientId: string,
-    executorId: string,
     rid: string,
-    text: string
+    patientId?: string,
+    executorId?: string,
+    text?: string
   ): Promise<any | Boolean> {
     let _body = null
 

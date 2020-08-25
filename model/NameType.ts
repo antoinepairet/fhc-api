@@ -30,6 +30,8 @@ export class NameType {
   }
   first?: string
 
+  lang?: string
+
   last?: string
 
   middle?: string
@@ -37,6 +39,8 @@ export class NameType {
   modificationDate?: string
 
   origin?: NameType.OriginEnum
+
+  value?: string
 }
 export namespace NameType {
   export enum OriginEnum {

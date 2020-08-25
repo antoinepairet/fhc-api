@@ -30,11 +30,7 @@ export class MemberInfoDto {
   }
   hospitalized?: boolean
 
-  io?: string
-
   ioMembership?: string
 
   ssin?: string
-
-  uniqId?: string
 }

@@ -87,6 +87,27 @@ export class fhcConsultrncontrollerApi {
       .then(doc => new models.SearchBySSINReplyDto(doc.body as JSON))
       .catch(err => this.handleError(err))
   }
+  registerPersonUsingPOST(
+    xFHCKeystoreId: string,
+    xFHCTokenId: string,
+    xFHCPassPhrase: string,
+    mid: models.PersonMid
+  ): Promise<models.RegisterPersonResponseDto | any> {
+    let _body = null
+    _body = mid
+
+    const _url = this.host + "/consultrn" + "?ts=" + new Date().getTime()
+    let headers = this.headers
+    headers = headers
+      .filter(h => h.header !== "Content-Type")
+      .concat(new XHR.Header("Content-Type", "application/json"))
+    headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId))
+    headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId))
+    headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase))
+    return XHR.sendCommand("POST", _url, headers, _body)
+      .then(doc => new models.RegisterPersonResponseDto(doc.body as JSON))
+      .catch(err => this.handleError(err))
+  }
   searchUsingGET(
     xFHCKeystoreId: string,
     xFHCTokenId: string,

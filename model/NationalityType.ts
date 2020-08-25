@@ -30,11 +30,19 @@ export class NationalityType {
   }
   descriptions?: Array<models.LocalisedString>
 
+  endDate?: Date
+
   insCode?: number
 
   modificationDate?: string
 
+  nationalityCode?: string
+
+  nationalityDescriptions?: Array<models.NameType>
+
   origin?: NationalityType.OriginEnum
+
+  startDate?: Date
 }
 export namespace NationalityType {
   export enum OriginEnum {

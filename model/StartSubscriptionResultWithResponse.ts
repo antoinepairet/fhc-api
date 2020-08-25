@@ -32,8 +32,6 @@ export class StartSubscriptionResultWithResponse {
 
   errors?: Array<models.MycarenetError>
 
-  genericErrors?: Array<models.FaultType>
-
   inscriptionDate?: number
 
   kmehrMessage?: Array<string>

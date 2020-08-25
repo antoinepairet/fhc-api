@@ -42,64 +42,6 @@ export class fhcMemberdatacontrollerApi {
     else throw Error("api-error" + e.status)
   }
 
-  confirmMemberDataAcksAsyncUsingPOST(
-    xFHCTokenId: string,
-    xFHCKeystoreId: string,
-    xFHCPassPhrase: string,
-    hcpNihii: string,
-    hcpName: string,
-    mdaAcksHashes: Array<string>
-  ): Promise<boolean | any> {
-    let _body = null
-    _body = mdaAcksHashes
-
-    const _url =
-      this.host +
-      "/mda/async/confirm/acks" +
-      "?ts=" +
-      new Date().getTime() +
-      (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +
-      (hcpName ? "&hcpName=" + hcpName : "")
-    let headers = this.headers
-    headers = headers
-      .filter(h => h.header !== "Content-Type")
-      .concat(new XHR.Header("Content-Type", "application/json"))
-    headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId))
-    headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId))
-    headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase))
-    return XHR.sendCommand("POST", _url, headers, _body)
-      .then(doc => JSON.parse(JSON.stringify(doc.body)))
-      .catch(err => this.handleError(err))
-  }
-  confirmMemberDataMessagesAsyncUsingPOST(
-    xFHCTokenId: string,
-    xFHCKeystoreId: string,
-    xFHCPassPhrase: string,
-    hcpNihii: string,
-    hcpName: string,
-    mdaMessagesReference: Array<string>
-  ): Promise<boolean | any> {
-    let _body = null
-    _body = mdaMessagesReference
-
-    const _url =
-      this.host +
-      "/mda/async/confirm/messages" +
-      "?ts=" +
-      new Date().getTime() +
-      (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +
-      (hcpName ? "&hcpName=" + hcpName : "")
-    let headers = this.headers
-    headers = headers
-      .filter(h => h.header !== "Content-Type")
-      .concat(new XHR.Header("Content-Type", "application/json"))
-    headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId))
-    headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId))
-    headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase))
-    return XHR.sendCommand("POST", _url, headers, _body)
-      .then(doc => JSON.parse(JSON.stringify(doc.body)))
-      .catch(err => this.handleError(err))
-  }
   getMemberDataByMembershipUsingGET(
     io: string,
     ioMembership: string,
@@ -143,14 +85,15 @@ export class fhcMemberdatacontrollerApi {
       .then(doc => new models.MemberDataResponse(doc.body as JSON))
       .catch(err => this.handleError(err))
   }
-  getMemberDataMessageAsyncUsingPOST(
+  getMemberDataMessageUsingPOST(
     xFHCTokenId: string,
     xFHCKeystoreId: string,
     xFHCPassPhrase: string,
     hcpNihii: string,
+    hcpSsin: string,
     hcpName: string,
     messageNames: Array<string>
-  ): Promise<models.MemberDataList | any> {
+  ): Promise<any | Boolean> {
     let _body = null
 
     const _url =
@@ -159,6 +102,7 @@ export class fhcMemberdatacontrollerApi {
       "?ts=" +
       new Date().getTime() +
       (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +
+      (hcpSsin ? "&hcpSsin=" + hcpSsin : "") +
       (hcpName ? "&hcpName=" + hcpName : "") +
       (messageNames ? "&messageNames=" + messageNames : "")
     let headers = this.headers
@@ -169,7 +113,7 @@ export class fhcMemberdatacontrollerApi {
     headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId))
     headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase))
     return XHR.sendCommand("POST", _url, headers, _body)
-      .then(doc => new models.MemberDataList(doc.body as JSON))
+      .then(doc => true)
       .catch(err => this.handleError(err))
   }
   getMemberDataUsingGET(
@@ -299,12 +243,14 @@ export class fhcMemberdatacontrollerApi {
       .then(doc => new models.MemberDataResponse(doc.body as JSON))
       .catch(err => this.handleError(err))
   }
-  sendMemberDataRequestAsyncUsingPOST(
+  sendMemberDataRequestUsingPOST(
     xFHCTokenId: string,
     xFHCKeystoreId: string,
     xFHCPassPhrase: string,
     hcpNihii: string,
+    hcpSsin: string,
     hcpName: string,
+    io: string,
     mdaRequest: models.MemberDataBatchRequestDto,
     hcpQuality?: string,
     date?: number,
@@ -317,10 +263,11 @@ export class fhcMemberdatacontrollerApi {
 
     const _url =
       this.host +
-      "/mda/async/request" +
+      "/mda/async/request/{io}".replace("{io}", io + "") +
       "?ts=" +
       new Date().getTime() +
       (hcpNihii ? "&hcpNihii=" + hcpNihii : "") +
+      (hcpSsin ? "&hcpSsin=" + hcpSsin : "") +
       (hcpName ? "&hcpName=" + hcpName : "") +
       (hcpQuality ? "&hcpQuality=" + hcpQuality : "") +
       (date ? "&date=" + date : "") +
