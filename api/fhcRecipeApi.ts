@@ -158,8 +158,8 @@ export class fhcRecipeApi {
    * @param xFHCTokenId X-FHC-tokenId
    * @param xFHCPassPhrase X-FHC-passPhrase
    * @param rid rid
-   * @param hcpQuality hcpQuality
    * @param hcpNihii hcpNihii
+   * @param hcpQuality hcpQuality
    * @param hcpSsin hcpSsin
    * @param hcpName hcpName
    */
@@ -168,8 +168,8 @@ export class fhcRecipeApi {
     xFHCTokenId: string,
     xFHCPassPhrase: string,
     rid: string,
-    hcpQuality?: string,
     hcpNihii: string,
+    hcpQuality?: string,
     hcpSsin?: string,
     hcpName?: string
   ): Promise<Kmehrmessage> {
@@ -180,8 +180,8 @@ export class fhcRecipeApi {
       `/recipe/prescription/${encodeURIComponent(String(rid))}` +
       "?ts=" +
       new Date().getTime() +
-      (hcpQuality ? "&hcpQuality=" + encodeURIComponent(String(hcpQuality)) : "") +
       (hcpNihii ? "&hcpNihii=" + encodeURIComponent(String(hcpNihii)) : "") +
+      (hcpQuality ? "&hcpQuality=" + encodeURIComponent(String(hcpQuality)) : "") +
       (hcpSsin ? "&hcpSsin=" + encodeURIComponent(String(hcpSsin)) : "") +
       (hcpName ? "&hcpName=" + encodeURIComponent(String(hcpName)) : "")
     let headers = this.headers
@@ -288,9 +288,9 @@ export class fhcRecipeApi {
    * @param xFHCKeystoreId X-FHC-keystoreId
    * @param xFHCTokenId X-FHC-tokenId
    * @param xFHCPassPhrase X-FHC-passPhrase
-   * @param hcpQuality hcpQuality
    * @param hcpNihii hcpNihii
    * @param patientId patientId
+   * @param hcpQuality hcpQuality
    * @param hcpSsin hcpSsin
    * @param hcpName hcpName
    */
@@ -298,9 +298,9 @@ export class fhcRecipeApi {
     xFHCKeystoreId: string,
     xFHCTokenId: string,
     xFHCPassPhrase: string,
-    hcpQuality?: string,
     hcpNihii: string,
     patientId: string,
+    hcpQuality?: string,
     hcpSsin?: string,
     hcpName?: string
   ): Promise<Array<Prescription>> {
@@ -311,9 +311,9 @@ export class fhcRecipeApi {
       `/recipe/patient` +
       "?ts=" +
       new Date().getTime() +
-      (hcpQuality ? "&hcpQuality=" + encodeURIComponent(String(hcpQuality)) : "") +
       (hcpNihii ? "&hcpNihii=" + encodeURIComponent(String(hcpNihii)) : "") +
       (patientId ? "&patientId=" + encodeURIComponent(String(patientId)) : "") +
+      (hcpQuality ? "&hcpQuality=" + encodeURIComponent(String(hcpQuality)) : "") +
       (hcpSsin ? "&hcpSsin=" + encodeURIComponent(String(hcpSsin)) : "") +
       (hcpName ? "&hcpName=" + encodeURIComponent(String(hcpName)) : "")
     let headers = this.headers
@@ -462,8 +462,8 @@ export class fhcRecipeApi {
    * @param xFHCPassPhrase X-FHC-passPhrase
    * @param rid rid
    * @param feedbackFlag feedbackFlag
-   * @param hcpQuality hcpQuality
    * @param hcpNihii hcpNihii
+   * @param hcpQuality hcpQuality
    * @param hcpSsin hcpSsin
    * @param hcpName hcpName
    */
@@ -473,8 +473,8 @@ export class fhcRecipeApi {
     xFHCPassPhrase: string,
     rid: string,
     feedbackFlag: boolean,
-    hcpQuality?: string,
     hcpNihii: string,
+    hcpQuality?: string,
     hcpSsin?: string,
     hcpName?: string
   ): Promise<UpdateFeedbackFlagResult> {
@@ -487,8 +487,8 @@ export class fhcRecipeApi {
       )}` +
       "?ts=" +
       new Date().getTime() +
-      (hcpQuality ? "&hcpQuality=" + encodeURIComponent(String(hcpQuality)) : "") +
       (hcpNihii ? "&hcpNihii=" + encodeURIComponent(String(hcpNihii)) : "") +
+      (hcpQuality ? "&hcpQuality=" + encodeURIComponent(String(hcpQuality)) : "") +
       (hcpSsin ? "&hcpSsin=" + encodeURIComponent(String(hcpSsin)) : "") +
       (hcpName ? "&hcpName=" + encodeURIComponent(String(hcpName)) : "")
     let headers = this.headers
