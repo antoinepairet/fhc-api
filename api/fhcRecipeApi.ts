@@ -30,7 +30,7 @@ export class fhcRecipeApi {
     fetchImpl?: (input: RequestInfo, init?: RequestInit) => Promise<Response>
   ) {
     this.host = host
-    this.headers = Object.keys(headers).map((k) => new XHR.Header(k, headers[k]))
+    this.headers = Object.keys(headers).map(k => new XHR.Header(k, headers[k]))
     this.fetchImpl = fetchImpl
   }
 
@@ -61,7 +61,7 @@ export class fhcRecipeApi {
     hcpNihii: string,
     hcpSsin?: string,
     hcpName?: string,
-    xFHCPassPhrase: string,
+    xFHCPassPhrase?: string,
     body?: PrescriptionRequest
   ): Promise<Prescription> {
     let _body = null
@@ -78,14 +78,14 @@ export class fhcRecipeApi {
       (hcpName ? "&hcpName=" + encodeURIComponent(String(hcpName)) : "")
     let headers = this.headers
     headers = headers
-      .filter((h) => h.header !== "Content-Type")
+      .filter(h => h.header !== "Content-Type")
       .concat(new XHR.Header("Content-Type", "application/json"))
     xFHCKeystoreId && (headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId)))
     xFHCTokenId && (headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId)))
     xFHCPassPhrase && (headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase)))
     return XHR.sendCommand("POST", _url, headers, _body, this.fetchImpl)
-      .then((doc) => new Prescription(doc.body as JSON))
-      .catch((err) => this.handleError(err))
+      .then(doc => new Prescription(doc.body as JSON))
+      .catch(err => this.handleError(err))
   }
 
   /**
@@ -107,7 +107,7 @@ export class fhcRecipeApi {
     hcpNihii: string,
     hcpSsin?: string,
     hcpName?: string,
-    xFHCPassPhrase: string,
+    xFHCPassPhrase?: string,
     body?: PrescriptionRequest
   ): Promise<Prescription> {
     let _body = null
@@ -124,14 +124,14 @@ export class fhcRecipeApi {
       (hcpName ? "&hcpName=" + encodeURIComponent(String(hcpName)) : "")
     let headers = this.headers
     headers = headers
-      .filter((h) => h.header !== "Content-Type")
+      .filter(h => h.header !== "Content-Type")
       .concat(new XHR.Header("Content-Type", "application/json"))
     xFHCKeystoreId && (headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId)))
     xFHCTokenId && (headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId)))
     xFHCPassPhrase && (headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase)))
     return XHR.sendCommand("POST", _url, headers, _body, this.fetchImpl)
-      .then((doc) => new Prescription(doc.body as JSON))
-      .catch((err) => this.handleError(err))
+      .then(doc => new Prescription(doc.body as JSON))
+      .catch(err => this.handleError(err))
   }
 
   /**
@@ -146,8 +146,8 @@ export class fhcRecipeApi {
       this.host + `/recipe/gal/${encodeURIComponent(String(galId))}` + "?ts=" + new Date().getTime()
     let headers = this.headers
     return XHR.sendCommand("GET", _url, headers, _body, this.fetchImpl)
-      .then((doc) => new Code(doc.body as JSON))
-      .catch((err) => this.handleError(err))
+      .then(doc => new Code(doc.body as JSON))
+      .catch(err => this.handleError(err))
   }
 
   /**
@@ -168,7 +168,7 @@ export class fhcRecipeApi {
     xFHCPassPhrase: string,
     rid: string,
     hcpQuality?: string,
-    hcpNihii: string,
+    hcpNihii?: string,
     hcpSsin?: string,
     hcpName?: string
   ): Promise<Kmehrmessage> {
@@ -188,8 +188,8 @@ export class fhcRecipeApi {
     xFHCTokenId && (headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId)))
     xFHCPassPhrase && (headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase)))
     return XHR.sendCommand("GET", _url, headers, _body, this.fetchImpl)
-      .then((doc) => new Kmehrmessage(doc.body as JSON))
-      .catch((err) => this.handleError(err))
+      .then(doc => new Kmehrmessage(doc.body as JSON))
+      .catch(err => this.handleError(err))
   }
 
   /**
@@ -221,8 +221,8 @@ export class fhcRecipeApi {
     xFHCTokenId && (headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId)))
     xFHCPassPhrase && (headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase)))
     return XHR.sendCommand("GET", _url, headers, _body, this.fetchImpl)
-      .then((doc) => new GetPrescriptionStatusResult(doc.body as JSON))
-      .catch((err) => this.handleError(err))
+      .then(doc => new GetPrescriptionStatusResult(doc.body as JSON))
+      .catch(err => this.handleError(err))
   }
 
   /**
@@ -237,8 +237,8 @@ export class fhcRecipeApi {
       this.host + `/recipe/${encodeURIComponent(String(rid))}` + "?ts=" + new Date().getTime()
     let headers = this.headers
     return XHR.sendCommand("GET", _url, headers, _body, this.fetchImpl)
-      .then((doc) => new PrescriptionFullWithFeedback(doc.body as JSON))
-      .catch((err) => this.handleError(err))
+      .then(doc => new PrescriptionFullWithFeedback(doc.body as JSON))
+      .catch(err => this.handleError(err))
   }
 
   /**
@@ -277,8 +277,8 @@ export class fhcRecipeApi {
     xFHCTokenId && (headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId)))
     xFHCPassPhrase && (headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase)))
     return XHR.sendCommand("GET", _url, headers, _body, this.fetchImpl)
-      .then((doc) => (doc.body as Array<JSON>).map((it) => new Feedback(it)))
-      .catch((err) => this.handleError(err))
+      .then(doc => (doc.body as Array<JSON>).map(it => new Feedback(it)))
+      .catch(err => this.handleError(err))
   }
 
   /**
@@ -298,8 +298,8 @@ export class fhcRecipeApi {
     xFHCTokenId: string,
     xFHCPassPhrase: string,
     hcpQuality?: string,
-    hcpNihii: string,
-    patientId: string,
+    hcpNihii?: string,
+    patientId?: string,
     hcpSsin?: string,
     hcpName?: string
   ): Promise<Array<Prescription>> {
@@ -320,8 +320,8 @@ export class fhcRecipeApi {
     xFHCTokenId && (headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId)))
     xFHCPassPhrase && (headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase)))
     return XHR.sendCommand("GET", _url, headers, _body, this.fetchImpl)
-      .then((doc) => (doc.body as Array<JSON>).map((it) => new Prescription(it)))
-      .catch((err) => this.handleError(err))
+      .then(doc => (doc.body as Array<JSON>).map(it => new Prescription(it)))
+      .catch(err => this.handleError(err))
   }
 
   /**
@@ -365,8 +365,8 @@ export class fhcRecipeApi {
     xFHCTokenId && (headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId)))
     xFHCPassPhrase && (headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase)))
     return XHR.sendCommand("DELETE", _url, headers, _body, this.fetchImpl)
-      .then((doc) => true)
-      .catch((err) => this.handleError(err))
+      .then(doc => true)
+      .catch(err => this.handleError(err))
   }
 
   /**
@@ -416,8 +416,8 @@ export class fhcRecipeApi {
     xFHCTokenId && (headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId)))
     xFHCPassPhrase && (headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase)))
     return XHR.sendCommand("POST", _url, headers, _body, this.fetchImpl)
-      .then((doc) => true)
-      .catch((err) => this.handleError(err))
+      .then(doc => true)
+      .catch(err => this.handleError(err))
   }
 
   /**
@@ -440,7 +440,7 @@ export class fhcRecipeApi {
     rid: string,
     feedbackFlag: boolean,
     hcpQuality?: string,
-    hcpNihii: string,
+    hcpNihii?: string,
     hcpSsin?: string,
     hcpName?: string
   ): Promise<UpdateFeedbackFlagResult> {
@@ -462,7 +462,7 @@ export class fhcRecipeApi {
     xFHCTokenId && (headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId)))
     xFHCPassPhrase && (headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase)))
     return XHR.sendCommand("PUT", _url, headers, _body, this.fetchImpl)
-      .then((doc) => new UpdateFeedbackFlagResult(doc.body as JSON))
-      .catch((err) => this.handleError(err))
+      .then(doc => new UpdateFeedbackFlagResult(doc.body as JSON))
+      .catch(err => this.handleError(err))
   }
 }
