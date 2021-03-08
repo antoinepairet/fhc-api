@@ -19,12 +19,12 @@ export class Address {
   }
 
   addressType?: Address.AddressTypeEnum
+  street?: string
+  houseNumber?: string
+  postboxNumber?: string
+  postalCode?: string
   city?: string
   country?: string
-  houseNumber?: string
-  postalCode?: string
-  postboxNumber?: string
-  street?: string
   telecoms?: Array<Telecom>
 }
 export namespace Address {

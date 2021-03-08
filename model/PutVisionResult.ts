@@ -9,17 +9,15 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { StatusType } from "./StatusType"
 
 import { decodeBase64 } from "./ModelHelper"
 
-export class Appendix {
+export class PutVisionResult {
   constructor(json: JSON | any) {
-    Object.assign(this as Appendix, json, json.data ? { data: decodeBase64(json.data) } : {})
+    Object.assign(this as PutVisionResult, json)
   }
 
-  verseSeq?: number
-  documentSeq?: number
-  data?: ArrayBuffer
-  mimeType?: string
-  path?: string
+  id?: string
+  status?: StatusType
 }

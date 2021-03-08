@@ -17,6 +17,7 @@ import { Kmehrmessage } from "../model/Kmehrmessage"
 import { Prescription } from "../model/Prescription"
 import { PrescriptionFullWithFeedback } from "../model/PrescriptionFullWithFeedback"
 import { PrescriptionRequest } from "../model/PrescriptionRequest"
+import { PutVisionResult } from "../model/PutVisionResult"
 import { UpdateFeedbackFlagResult } from "../model/UpdateFeedbackFlagResult"
 
 export class fhcRecipeApi {
@@ -48,20 +49,20 @@ export class fhcRecipeApi {
    * @param body prescription
    * @param xFHCKeystoreId X-FHC-keystoreId
    * @param xFHCTokenId X-FHC-tokenId
+   * @param xFHCPassPhrase X-FHC-passPhrase
    * @param hcpQuality hcpQuality
    * @param hcpNihii hcpNihii
    * @param hcpSsin hcpSsin
    * @param hcpName hcpName
-   * @param xFHCPassPhrase X-FHC-passPhrase
    */
   createPrescriptionUsingPOST(
     xFHCKeystoreId: string,
     xFHCTokenId: string,
+    xFHCPassPhrase: string,
     hcpQuality: string,
     hcpNihii: string,
     hcpSsin?: string,
     hcpName?: string,
-    xFHCPassPhrase?: string,
     body?: PrescriptionRequest
   ): Promise<Prescription> {
     let _body = null
@@ -94,20 +95,20 @@ export class fhcRecipeApi {
    * @param body prescription
    * @param xFHCKeystoreId X-FHC-keystoreId
    * @param xFHCTokenId X-FHC-tokenId
+   * @param xFHCPassPhrase X-FHC-passPhrase
    * @param hcpQuality hcpQuality
    * @param hcpNihii hcpNihii
    * @param hcpSsin hcpSsin
    * @param hcpName hcpName
-   * @param xFHCPassPhrase X-FHC-passPhrase
    */
   createPrescriptionV4UsingPOST(
     xFHCKeystoreId: string,
     xFHCTokenId: string,
+    xFHCPassPhrase: string,
     hcpQuality: string,
     hcpNihii: string,
     hcpSsin?: string,
     hcpName?: string,
-    xFHCPassPhrase?: string,
     body?: PrescriptionRequest
   ): Promise<Prescription> {
     let _body = null
@@ -168,7 +169,7 @@ export class fhcRecipeApi {
     xFHCPassPhrase: string,
     rid: string,
     hcpQuality?: string,
-    hcpNihii?: string,
+    hcpNihii: string,
     hcpSsin?: string,
     hcpName?: string
   ): Promise<Kmehrmessage> {
@@ -298,8 +299,8 @@ export class fhcRecipeApi {
     xFHCTokenId: string,
     xFHCPassPhrase: string,
     hcpQuality?: string,
-    hcpNihii?: string,
-    patientId?: string,
+    hcpNihii: string,
+    patientId: string,
     hcpSsin?: string,
     hcpName?: string
   ): Promise<Array<Prescription>> {
@@ -374,11 +375,11 @@ export class fhcRecipeApi {
    * @summary sendNotification
    * @param xFHCKeystoreId X-FHC-keystoreId
    * @param xFHCTokenId X-FHC-tokenId
+   * @param xFHCPassPhrase X-FHC-passPhrase
    * @param hcpQuality hcpQuality
    * @param hcpNihii hcpNihii
    * @param hcpSsin hcpSsin
    * @param hcpName hcpName
-   * @param xFHCPassPhrase X-FHC-passPhrase
    * @param patientId patientId
    * @param executorId executorId
    * @param rid rid
@@ -387,11 +388,11 @@ export class fhcRecipeApi {
   sendNotificationUsingPOST(
     xFHCKeystoreId: string,
     xFHCTokenId: string,
+    xFHCPassPhrase: string,
     hcpQuality: string,
     hcpNihii: string,
     hcpSsin: string,
     hcpName: string,
-    xFHCPassPhrase: string,
     patientId: string,
     executorId: string,
     rid: string,
@@ -422,6 +423,39 @@ export class fhcRecipeApi {
 
   /**
    *
+   * @summary setVision
+   * @param xFHCKeystoreId X-FHC-keystoreId
+   * @param xFHCTokenId X-FHC-tokenId
+   * @param xFHCPassPhrase X-FHC-passPhrase
+   * @param rid rid
+   * @param vision vision
+   */
+  setVisionUsingPUT(
+    xFHCKeystoreId: string,
+    xFHCTokenId: string,
+    xFHCPassPhrase: string,
+    rid: string,
+    vision: string
+  ): Promise<PutVisionResult> {
+    let _body = null
+
+    const _url =
+      this.host +
+      `/recipe/${encodeURIComponent(String(rid))}/vision` +
+      "?ts=" +
+      new Date().getTime() +
+      (vision ? "&vision=" + encodeURIComponent(String(vision)) : "")
+    let headers = this.headers
+    xFHCKeystoreId && (headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId)))
+    xFHCTokenId && (headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId)))
+    xFHCPassPhrase && (headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase)))
+    return XHR.sendCommand("PUT", _url, headers, _body, this.fetchImpl)
+      .then(doc => new PutVisionResult(doc.body as JSON))
+      .catch(err => this.handleError(err))
+  }
+
+  /**
+   *
    * @summary updateFeedbackFlag
    * @param xFHCKeystoreId X-FHC-keystoreId
    * @param xFHCTokenId X-FHC-tokenId
@@ -440,7 +474,7 @@ export class fhcRecipeApi {
     rid: string,
     feedbackFlag: boolean,
     hcpQuality?: string,
-    hcpNihii?: string,
+    hcpNihii: string,
     hcpSsin?: string,
     hcpName?: string
   ): Promise<UpdateFeedbackFlagResult> {

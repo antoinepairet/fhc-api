@@ -27,7 +27,7 @@ export class fhcStsApi {
     fetchImpl?: (input: RequestInfo, init?: RequestInit) => Promise<Response>
   ) {
     this.host = host
-    this.headers = Object.keys(headers).map((k) => new XHR.Header(k, headers[k]))
+    this.headers = Object.keys(headers).map(k => new XHR.Header(k, headers[k]))
     this.fetchImpl = fetchImpl
   }
 
@@ -51,8 +51,8 @@ export class fhcStsApi {
     let headers = this.headers
     xFHCKeystoreId && (headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId)))
     return XHR.sendCommand("GET", _url, headers, _body, this.fetchImpl)
-      .then((doc) => JSON.parse(JSON.stringify(doc.body)))
-      .catch((err) => this.handleError(err))
+      .then(doc => JSON.parse(JSON.stringify(doc.body)))
+      .catch(err => this.handleError(err))
   }
 
   /**
@@ -67,8 +67,8 @@ export class fhcStsApi {
     let headers = this.headers
     xFHCTokenId && (headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId)))
     return XHR.sendCommand("GET", _url, headers, _body, this.fetchImpl)
-      .then((doc) => JSON.parse(JSON.stringify(doc.body)))
-      .catch((err) => this.handleError(err))
+      .then(doc => JSON.parse(JSON.stringify(doc.body)))
+      .catch(err => this.handleError(err))
   }
 
   /**
@@ -98,8 +98,8 @@ export class fhcStsApi {
     xFHCPassPhrase && (headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase)))
     xFHCKeystoreId && (headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId)))
     return XHR.sendCommand("GET", _url, headers, _body, this.fetchImpl)
-      .then((doc) => new BearerToken(doc.body as JSON))
-      .catch((err) => this.handleError(err))
+      .then(doc => new BearerToken(doc.body as JSON))
+      .catch(err => this.handleError(err))
   }
 
   /**
@@ -119,8 +119,8 @@ export class fhcStsApi {
     let headers = this.headers
     xFHCPassPhrase && (headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase)))
     return XHR.sendCommand("GET", _url, headers, _body, this.fetchImpl)
-      .then((doc) => new CertificateInfo(doc.body as JSON))
-      .catch((err) => this.handleError(err))
+      .then(doc => new CertificateInfo(doc.body as JSON))
+      .catch(err => this.handleError(err))
   }
 
   /**
@@ -151,8 +151,8 @@ export class fhcStsApi {
     xFHCPassPhrase && (headers = headers.concat(new XHR.Header("X-FHC-passPhrase", xFHCPassPhrase)))
     xFHCKeystoreId && (headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId)))
     return XHR.sendCommand("GET", _url, headers, _body, this.fetchImpl)
-      .then((doc) => new TokenResponse(doc.body as JSON))
-      .catch((err) => this.handleError(err))
+      .then(doc => new TokenResponse(doc.body as JSON))
+      .catch(err => this.handleError(err))
   }
 
   /**
@@ -178,12 +178,12 @@ export class fhcStsApi {
       (quality ? "&quality=" + encodeURIComponent(String(quality)) : "")
     let headers = this.headers
     headers = headers
-      .filter((h) => h.header !== "Content-Type")
+      .filter(h => h.header !== "Content-Type")
       .concat(new XHR.Header("Content-Type", "application/json"))
     xFHCTokenId && (headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId)))
     return XHR.sendCommand("POST", _url, headers, _body, this.fetchImpl)
-      .then((doc) => true)
-      .catch((err) => this.handleError(err))
+      .then(doc => true)
+      .catch(err => this.handleError(err))
   }
 
   /**
@@ -215,8 +215,8 @@ export class fhcStsApi {
     xFHCKeystoreId && (headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId)))
     xFHCTokenId && (headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId)))
     return XHR.sendCommand("GET", _url, headers, _body, this.fetchImpl)
-      .then((doc) => new SamlTokenResult(doc.body as JSON))
-      .catch((err) => this.handleError(err))
+      .then(doc => new SamlTokenResult(doc.body as JSON))
+      .catch(err => this.handleError(err))
   }
 
   /**
@@ -255,8 +255,8 @@ export class fhcStsApi {
     xFHCKeystoreId && (headers = headers.concat(new XHR.Header("X-FHC-keystoreId", xFHCKeystoreId)))
     xFHCTokenId && (headers = headers.concat(new XHR.Header("X-FHC-tokenId", xFHCTokenId)))
     return XHR.sendCommand("GET", _url, headers, _body, this.fetchImpl)
-      .then((doc) => new SamlTokenResult(doc.body as JSON))
-      .catch((err) => this.handleError(err))
+      .then(doc => new SamlTokenResult(doc.body as JSON))
+      .catch(err => this.handleError(err))
   }
 
   /**
@@ -276,10 +276,10 @@ export class fhcStsApi {
     const _url = this.host + `/sts/keystore` + "?ts=" + new Date().getTime()
     let headers = this.headers
     headers = headers
-      .filter((h) => h.header !== "Content-Type")
+      .filter(h => h.header !== "Content-Type")
       .concat(new XHR.Header("Content-Type", "multipart/form-data"))
     return XHR.sendCommand("POST", _url, headers, _body, this.fetchImpl)
-      .then((doc) => new UUIDType(doc.body as JSON))
-      .catch((err) => this.handleError(err))
+      .then(doc => new UUIDType(doc.body as JSON))
+      .catch(err => this.handleError(err))
   }
 }
