@@ -213,7 +213,7 @@ export class fhcMhmApi {
       (patientLastName ? "&patientLastName=" + encodeURIComponent(String(patientLastName)) : "") +
       (patientGender ? "&patientGender=" + encodeURIComponent(String(patientGender)) : "") +
       (startDate ? "&startDate=" + encodeURIComponent(String(startDate)) : "") +
-      (isTrial ? "&isTrial=" + encodeURIComponent(String(isTrial)) : "") +
+      "&isTrial=" + encodeURIComponent(String(isTrial)) +
       (signatureType ? "&signatureType=" + encodeURIComponent(String(signatureType)) : "") +
       (patientSsin ? "&patientSsin=" + encodeURIComponent(String(patientSsin)) : "") +
       (io ? "&io=" + encodeURIComponent(String(io)) : "") +
